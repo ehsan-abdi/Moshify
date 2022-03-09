@@ -1,0 +1,2292 @@
+<!-- 
+
+Course started on 28/02/2022 
+Course completed on XXXXXXXX
+
+========================================================================================
+                                        General Notes
+========================================================================================
+
+- Useful extensions:
+  - Live server
+  - Prettier
+  - HTML CSS Support (provides Intellisense for HTML/CSS classes)
+  - CSS Peek (allows to quickly find styles for an HTML class inside a CSS file)
+  - Highlight Matching Tag (when we highlight a closing tag, it will highlight the opening tag)
+  - Todo Highlight (highlights the comments when we type TODO in the comment section)
+
+- To create a quick template from scratch, type ! and press tab.
+
+- Validation
+    - HTML validation: https://validator.w3.org/
+    - CSS validation: https://jigsaw.w3.org/css-validator/
+
+- If an HTML attribute has a boolean type, the presence of that attribute represents true and
+  its absence represent false. We cannot set a value true or false to the boolean attribute in html.
+
+https://caniuse.com/
+    We can check if an html or css features is supprted by a browser on caniuse.com
+
+Free Images and Videos
+    - Use https://unsplash.com/ for free images
+    - Use https://www.pexels.com/ for free images and videos
+
+- To add dummy text with 200 length, we type lorem200 then press tab.
+
+- We cannot have multiple elements with the same id. But we can have multiple elements with the same class.
+
+- An element can have multiple classes, separated by space eg. class="box box-one"
+
+- We can create custom attribute in HTML by using 'data-' and then have our custom text. 
+  For example: data-value="abcd"
+
+- Use online tools to create cool gradients. Good example is: https://cssgradient.io/
+
+- Visit https://css-tricks.com/ for cool tricks using CSS
+
+- https://bennettfeely.com/  => Interesting CSS tricks (including image clipping and filters)
+
+- We use univerall selector to apply a CSS property to ALL elements  * {}
+
+- The standard breakpoint for tablets is 768px (when performing @media)
+
+- At the beginning of the CSS, we can start with
+      html {
+        font-size: 62.5%;  => this will set the default rem unit to 10px
+      }
+
+      body {
+        font-size: 1.6rem; => this will set the font size to the default value (i.e. 16px)
+      }
+
+- Font website:
+    - fontsquirrel.com (free)
+    - fonts.google.com (free)
+    - Adobe Fonts (fonts.adobe.com) - Paid
+    - fonts.com (paid)
+    - fontdeck.com (paid) 
+
+- https://type-scale.com/
+  At the beginning of your project, go to type-scale.com and find the right font size for our headings.
+
+- https://www.flaticon.com/  => free icons
+
+- https://responsivebreakpoints.com/ to generate different versions (resolution) of an image for 
+  a responsive design. It will also create the CSS code.
+
+- https://www.svgbackgrounds.com/ provides great SVG images for background for free.
+
+- Most popular icon fonts are:
+    - Font Awesome
+    - Ionicons
+    - Material Design Icons
+
+- https://www.formspree.io to save form data. 
+  This is a powerful website. When a form is submitted, we get an email notification. It also integrate
+  with different services so we can send a user a custom email etc.
+
+- https://www.animate.style this is a cool website for animations
+
+========================================================================================
+                                        SEO 
+========================================================================================
+
+******* summarise all SEO / Search Engine points and search engine
+
+========================================================================================
+                                        HTML Basics
+========================================================================================
+
+- Several meta elements are created by default:
+    - charset="UTF-8" defines the character set for the page. UTF-8 is most common. It includes almost
+      all languages in the world.
+    - meta:viewport is related to the size of the view panel. It is critical in optimising the html page
+      for multiple screens.
+
+- We can add useful metadata to the header. For example:
+    - meta:desc will add description of the website so it will appear in search engine search results.
+    - meta:kw will add keywrod to the website. This is important for search engine optimisation. Keywords
+      are separated by comma.
+
+------------------------------------------- Text ---------------------------------------
+
+- Note that HTML should be only used to create structure and not styles. The styles should
+  be managed by CSS.
+
+- Common text elements:
+    <p> is used for paragraphs.
+    <em> and <strong> are used to emphasize text. This is important for SEO.
+    <h1> to <h6> are used for headings. These are only used to create hierarchy.
+
+- Each page should have only one <h1> heading. Otherwise, it will confuse search engines. 
+  <h1> is to state what the page is all about.
+
+- After <h1>, we use <h2>. Then for lower hierarchy we use <h3> and so on. We should not 
+  jump from <h1> to <h4>.
+
+- To add dummy text with 200 length, we type lorem200 then press tab.
+
+----------------------------------------- Entities -------------------------------------
+
+- To display special entities such as <, >, &, etc, we use entity name wapped between & and ;
+  For example, 
+    < ==>  &lt;
+    > ==>  &gt;
+    copyright sign ==> &copy;
+    Non-breaking space ==> &nbsp;  (is used instead of space, it ensures that the two words
+                                    on both sides should always be on a same line)
+
+- Full list of entities can be found on dev.w3.org
+
+---------------------------------------- Hyperlinks ------------------------------------
+
+- We use the anchor element for hyperlinks  <a>
+- An anchor element must have href (hypertext reference) attribute. href is a URL or a link.
+- href can contain a relative or absolute URL. 
+
+- Relative URL
+    - A relative url starts from the current page.
+      For example, if the reference page is called about.html and is located in a folder called 
+      'company' relative to index.html, then we will have: href="company/about.html"
+    - If we want to go one level up to access a page, we use ..
+      For example, if we want to have a link from about.html to index.html, we will have
+            href="../index.html"
+    - We can use .. multiple time to move a level up multiple times.
+
+- Absolute URL
+    - Absolute URL is from the root of our application. To use aboslute URL, we use / at the 
+      beginning of the address. For example, href="/index.html" or href="/company/about.html"
+
+- We can link to an image, document or a pdf file. In href we insert the address of the file.
+- If we want the file to be downloaded once the use is clicking on the link, we need to add
+  download attribute to the anchor element. For example:
+            <a href="images/mosh.jpg" download>Mosh Photo</a>
+
+- Linking inside the page
+    - We can fragment our page and have several fragments. Then we can link to each fragment.
+    - To link to an element, the element must have an id attribute. Then, in the anchor element,
+      we reference the id inside href by using # followed by the id. For example:
+            <a href="#section-css">CSS</a>
+            .....
+            <h2 id="section-css">CSS</h2>
+
+- Jump to the top
+    - If we only reference # inside href, then the anchor will link to the top of the page.
+            <a href="#">Jump to Top</a>
+
+- Linking to external websites
+    - We use the http/https prefix when linking to external sites.
+            <a href="https://google.com">Google</a>
+    - If we want the link to open in a new page, we need to add target="_blank" attribute to
+      the anchor.
+            <a href="https://google.com" target="_blank">Google</a>
+
+- Linking to email
+    - To link to an email address, we use prefix emailto: before the email address.
+            <a href="mailto:abcd@gmail.com">Email me</a>
+
+- Pseudo elements:
+  a:link      => when anchor is not yet visited
+  a:visited   => after anchor is visited
+  a:hover     => when mouse hovers on the link
+  a:focus     => when 'tab' key is used to focus on the link
+
+- To Remove the underline from link, in CSS: 
+  a:visited, a:link {text-decoration: none;}
+
+- If the anchor element is used to create menu/navigation, it is often used inside <ul>. 
+  It might be a good design solution if the <a> element inherits its color from the <ul> element:
+  a:link, a:visited {color: inherit;}
+    
+---------------------------------------- Images ------------------------------------
+
+- Use unsplash.com for free images
+- Use pexels.com for free images and videos
+
+- Always use descriptive name for image files, for the benefit of SEO.
+
+- Alt attribute
+    Use alt attribute for textual description of the image. This will help with both the SEO and
+    with providing accessibility. In addition, if the image cannot be loaded for some reasons, 
+    the alterntive text will be shown. Ensure the alt attribute contains a good description of
+    the image.
+
+- Size
+    One useful way to style the size of the image is to define the box that will contain the
+    the image and then use object-fit to fir the image into the box. 
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+    object-fit can take different values. For example, object-fit: cover will ensure that the 
+    image covers the entire box, but will not squash the image. We use cover for most of the times.
+    
+    We can always play with different values of a style inside the styles section of the developer
+    tool in the browser. 
+
+----------------------------------- Video and Audio -------------------------------
+
+- We use <video> and <audio> for video and audio content, respectively. Their features are almost
+  identical to each other.
+- The video/audio elements are not supported by a very few types of browsers. The best practice is
+  to privid a fall-back text if the browser does not support these elements. We put the fall-back
+  text inside the element. For example:
+            <video src="videos/ocean.mp4">Your browser does not support videos</video>
+
+- Attributes
+    The below attributes have boolean types. Use them to activate a cetain feature.
+        - Use control attribute to show video/audio control buttons
+        - Use autoplay attribute to activate autoplay
+        - Use loop attribute for looping
+
+            <video control autoplay loop src="videos/ocean.mp4">Your browser does not support videos</video>
+
+---------------------------------------- Lists ------------------------------------
+
+Types of lists:
+    Unordered list <ul>
+    Ordered list <ol>
+    Description list <dl>  (used for implementing glossaries or displaying metadata)
+
+- We use the list element <li> inside <ul> and <ol> to represent a list of items.
+- We use description term <dt> and description details <dd> inside <dl> to represent a list of terms and
+  their description. For example:
+        <dl>
+            <dt>Title</dt>
+            <dd>The Ultimate HTML and CSS Course</dd>
+            <dt>Author</dt>
+            <dd>Mosh Hamedani</dd>
+            <dt>Skills</dt>
+            <dd>HTML</dd>
+            <dd>CSS</dd>
+            <dd>Responsive Design</dd>
+        </dl>
+
+---------------------------------------- Tabls ------------------------------------
+
+Table element:             <table>
+Table row element:         <tr>
+Table header/footer cells: <th>
+Table data cells:          <td>
+
+If we want a cell to expand more than one column, we use colspan="" attribute and assign the number of
+  columns to it.
+
+Styles:
+  - This removes the space between the borders of each neighbouring cells:
+      table {
+        border-collapse: collapse;
+      }
+
+Sample table style:
+    table,
+    td,
+    th {
+      text-align: left;
+      border-collapse: collapse;
+      border: 1px solid #c4dcf3;
+      border-right: 0;
+      border-left: 0;
+    }
+
+    td,
+    th {
+      padding: 10px;
+    }
+
+    th {
+      color: white;
+      background: #427fef;
+    }
+
+    tr:nth-child(odd) {
+      background: #eef7ff;
+    }
+
+For improved SEO and accessibility, we should put the header, body and footer sections inside <thead>, 
+  <tbody> and <tfoot> sections. For example:
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">Expenses</th>
+                    </tr>
+                    <tr>
+                        <th>Category</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Marketing</td>
+                        <td>$100</td>
+                    </tr>
+                    <tr>
+                        <td>Accounting</td>
+                        <td>$200</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Total</th>
+                        <th>$300</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+---------------------------------------- Containers ------------------------------------
+
+Generic Containers
+    <div>
+        - <div> is a block-level element. Block-level elements always starts from a new line and fill up
+          the entire width of the page. But we can use CSS to limit their width. 
+
+    <span>
+        - <span> is an inline element. 
+        - It is often used for styling text. So we can wrap a section of a text inside <span> and style it
+          accordingly.
+
+Semantic (descriptive) Containers
+    We should use semantic containers whenever possible (instead of the generic containers), as it improves SEO.
+
+    <article>
+        - It is used for independent, self-containing content eg. forum post, comments, reviews, product card, etc.
+
+    <figure>
+        - It is used as a container for figures and typically used to wrap image elements <img>. 
+        - <figure> can contain a caption element <figcaption> above or below the <img> element.
+
+    <mark>
+        - Used to highlight or mark content. It does a similar job as <span>, but it is a semantic container.
+        
+    <time>
+        - Used to wrap date/time. 
+        - We can use datetime attribute and assign it to machine readable value, for better SEO.
+            <p>Published <time datetime="2022-02-28 17:30">28 February 2022 5:30pm<time></p>
+
+    <section>
+        - It is used to group related content inside a webpage or inside an <article>.
+        - We may use multiple <article> elements inside a <section> element or use multiple <section> elements
+          inside an <article> element.
+    
+    <main>, <Header> and <footer>
+        - These are used to structure a webpage.
+        - Each webpage can have only one <main> element.
+        - <Header> and <footer> can also be used insider a <section> or <article>
+
+    <aside>
+        - This is use for a sidebar that is used for advertising or content that is not directly related to the
+          main content.
+
+The structure of a webpage could be similar to this:
+            </head>
+                <body>
+                    <header></header>
+                    <main>
+                        <section></section>
+                        <section></section>
+                        <section></section>
+                    </main>
+                    <aside></aside>
+                    <footer></footer>
+                </body>
+            </html>
+
+
+========================================================================================
+                                        CSS Basics
+========================================================================================
+
+There are three types of styles:
+
+- Embedded: embedded in the HTML file
+- External: exist in an external CSS file
+- Inline: used to apply style to an HTML element
+
+Embedded styles:
+    - Drawbacks of embedded styles:
+        - Not scalable
+        - It violates the principle of separation of concerns
+    - Embedded styles take precedence over external stylesheets. So, it we want to apply a different
+      style other than the one set in the external stylesheet, we use embedded styles.
+
+External stylesheet:
+    - The stylesheet file extension must be .css
+    - The name of the file is typically styles.css
+    - <link> is used in the header of the HTML file to reference external stylesheets. It has two attributes: 
+      relationship attribute rel="stylesheet" which determins the type of resource we are linking to, and 
+      href which contains a relative or absolute url for the stylesheet file.
+                <link rel="stylesheet" href="styles.css">
+
+Inline styles:
+    - We should avoid inline styles as much as possible, because they are ugly and violate the separation
+      of concerns principle.
+    - To avoid inline styles, we can assign an id to the element and style that element in the embedded styles
+      or external stylesheets accordingly.
+    - Inline styles can be written using the style attribute inside an element. For example:
+                <a style="color: blue; font-weight: bold">Hello World</a>
+    
+-------------------------------------- Normalizing CSS ----------------------------------
+
+Download normalize.css from necolas.github.io and add it to the css folder. Then link to this css file
+  in the HTML file before linking to our own stylesheets.
+
+Essentially, normalize.css normalizez the styles so that so we start from a common ground in terms of styling
+  in all browsers (eg. Chrome, Safari, Firefox, etc). Of course, our stylesheets are then applied to determine styles. 
+
+-------------------------------------- Basic Selectros ----------------------------------
+
+- We can select elements by their type, id, class or attributes to apply styles.
+- It is not common to select elements by their attributes. Type, class and id are most common.
+
+- Selectors:
+    type:       body {}
+    class:      .products {}
+    id:         #this-product {}
+    attribute:  
+        a[target] {}           (all anchor elements with 'target' attribute)
+        a[target="_blank"] {}  (all anchor elements with target="_blank")
+        a[href*="google"] {}   (all anchor elements whose href contains "google")
+        a[href^="https"] {}    (all anchor elements whose href starts with "https")
+        a[href$=".com"] {}     (all anchor elements whose href ends with ".com")
+        a[][] {}               (combining two attribute conditions)
+
+- Using selectors:
+    .first {}           (all elements with class="first")
+    section.first {}    (<section> with class="first")
+    section .first {}   (elements with class="first" that are inside <section>)
+    .first#product {}   (element with class="first" and id="prodcut")  => this is useful to add more specificity
+    .first #product {}  (element with id="prodcut" inside an element with class="first") => this is useful to add more specificity
+
+----------------------------------- Relational Selectros --------------------------------
+
+- We can select elements based on their relationship with other elements
+- Relational selectors help us write cleaner markup, but they can be fragile. Because their style will
+  be dependent on the relationship of elements. If that changes, the styles will break.
+- If we are confident that the location of the elements are not going to chang in the future, it is 
+  perfectly fine to use relational selectors, but otherwise, select elements by their id or class. 
+
+- How relational selectors applied
+  Assume we have a <section id="products"> element.
+
+    #product p {}   (all paragraphs appear inside <section> i.e. all children of <section>)
+    #product > p {} (only direct children of <section> i.e. only <p> elements directly appear inside <section>)
+    #product + p {} (direct sibling of <section> i.e. the <p> element appears immediately after <section>)
+    #product ~ p {} (all siblings of <section> i.e. all <p> elements appearing after <section>)
+ 
+---------------------------------- Pseudo-class Selectros -------------------------------
+
+Pseudo classes are used to style elements in a particular state (e.g. hovered anchor)
+Pseudo classes follow a single colon. For example  :first-child
+
+- first-child, last-child, first-of-type and last-of-type
+
+  article :first-child {}       (the first element inside <article>)
+  article:first-child {}        (any <article> element that is the first child of a container)
+  article p:first-child {}      (any <p> that is the first child of <article>)
+  article :first-of-type {}     (the first occurance of elements of different types)
+  article p:first-of-type {}    (the first <p> inside <article>)
+  article:first-of-type {}      (the first <article> in any container)
+  article:hover .box {}         (apply styles to any element with class="box" when user hovers 
+                                 the mouse over the <article> element )
+
+  Similarly, we have last-child and last-of-type pseudo classes.
+
+- nth-child
+  
+  ul li:nth-child(odd) {}     (all odd <li> elements inside <ul>)
+  ul li:nth-child(3n) {}      (<li> elements, that are multiples of 3, inside <ul> ie. 3rd, 6th, ...)
+  
+- Hyperlinks
+
+  a:visited {}    (visited links)
+  a:link {}       (un-visited links)
+
+- hover and focus selectors (we should use both at the same time, as best practice)
+  img:hover, img:focus {}    (when mouse hovers on the element or the elemen is selected using Tab key)
+
+---------------------------------- Pseudo-element Selectros -------------------------------
+
+Pseudo elements are used to style part of an element (e.g. first letter in a paragraph)
+Pseudo elements follow a double collon. For example  ::first-letter
+
+  p::first-letter {}    (the first letter in a paragraph)
+  p::first-line {}      (the first line in a paragraph)
+  p::selection {}       (the selected text in a paragraph)
+  ::selection {}        (selection in any element)
+  p::before {           (inserting content before <p>: insert ... before paragraph and converts it to block-level element)
+    content: "...";
+    display: block;
+  }          
+  
+----------------------------------- Selectors Specificity ---------------------------------
+
+- Descending specificity:  id selector => class & attribute selectors => element selector
+
+- In case of the same specificity, the rule that comes last will be applied.
+
+- Example: Descending specificity
+    .highlight #product {}
+    #product {}
+    h2.highlight
+    .highlight {}
+    h2 {}
+
+---------------------------------------- Inheritance --------------------------------------
+
+- Generally, the properties that are about typography are ingeritted.
+- Properties such as border is not inheritted.
+- To avoid inheritance use 'initial' for the style value.
+- To force inheritance use 'inherit' for the style value.
+
+Example: setting <strong> element to avoid inheritance for color, but force inheritance for border.
+      strong {
+        color: initial;
+        border: inherit;
+      }
+
+------------------------------------------ Colors ----------------------------------------
+
+- We can use the following to specify color:
+    - Named colors    
+    - RGB             rgba(230, 205, 16, 0.3)  (alpha determins transparancy and is between 0 and 1)
+    - HSL             hsla(53, 65%, 77%) (hsl stands for Hue-Saturation-Lightness) (alpha determins transparancy and is between 0 and 1)
+    - Hexadecimal     #e6cd10 (each two digits represent the red, green and blue in RGB system)
+
+- Hexadecimal is the most common, but does not support the transparency feature (alpha value).
+
+---------------------------------------- Gradients ---------------------------------------
+
+- With gradients we can cool transitions between two or more colors.
+- We use background property for gradients.
+    background: linear-gradient()
+    background: radial-gradient()
+
+- Best practice: always provide a solid background before setting gradient background. This is in case
+  that some old browsers may not support gradient, so there is a fall-back option.
+      background: rgb(115, 107, 231);
+      background: linear-gradient(45deg, dodgerblue, yellow);
+
+- Linear gradient:
+  We can pass the direction of the gradient as the first argument, then the colors.
+  Next to each color, we can specify at what percentage in the specified direction the color should become solid.
+  Examples:
+      background: linear-gradient(to bottom right, dodgerblue, yellow)
+      background: linear-gradient(45deg, dodgerblue, yellow)
+      background: linear-gradient(45deg, dodgerblue, yellow 90%)
+      background: linear-gradient(45deg, dodgerblue, yellow, purple)
+
+- Radial gradient:
+  We can pass the shape of the radial gradient (as an option) then the colors.
+  Examples:
+      background: radial-gradient(white, yellow);
+      background: radial-gradient(circle, white, yellow);
+      background: radial-gradient(circle at top left, white, yellow);
+
+- Use online tools to create cool gradients. Good example is: cssgradient.io
+
+----------------------------------------- Borders ----------------------------------------
+
+- border property takes 3 arguments: 
+  - thickness
+  - style (solid, dotted, dashed)
+  - color
+
+  Example:
+      border: 1px solid royalblue;
+
+- We can specify the border for each side:
+      border-top
+      border-bottom
+      border-right
+      border-left
+
+- Setting border width, style and color for each side of the border:
+      border-width
+      border-style
+      border-color
+
+    - We can set values for width, style, color for each side of the border using above.
+    - We can supply four values for top, right, bottom and left, respectively.
+    - If we do not supply the value for left, the value for right will be applied.
+    - If we do not also supply the value for bottom, the value for top will be applied.
+    - If we only supply one value, that will be applied to all sides.
+
+    Example:
+      border-width: 1px, 2px, 1px, 2px;   (top, right, bottom, left)
+  
+- Round edges:
+  - Use border-radius to make the border edges round.
+          border-radius: 20px
+
+  - Sometimes, if we make the border of a container round, but the container has internal elements,
+    the internal elements will overflow the container and the round borders of the container is not
+    visible. For this, we should set the overflow property of the container to hidden:
+          .container {overflow: hidden;}
+
+- Create a circle:
+  To create a circle use border-radius: 100%
+        .box {
+          width: 200px;
+          height: 200px;
+          background: dodgerblue;
+          border-radius: 100%;
+        }
+
+- Other shapes (triangle, etc)
+  Visit css-tricks.com (search for The Shapes of CSS)
+
+----------------------------------------- Shadows ----------------------------------------
+
+- To add shado to a box or text, use:
+    box-shadow
+    text-shadow
+
+box-shadow: 10px 10px 30px 10px gray;
+  - The first and second values determine right-left and bottom-top positions, respectively. Positive values
+    move the shadow to right and bottom, and negative values move it to left and top.
+
+  - The third value determines the softness of the shadow (ie. making it blur)
+
+  - The fourth value is the width of spreading the shadow
+
+  - The fifth value is the shadow color.
+
+box-shadow: 0 0 30px gray;
+  - This puts the shadow under the box and there is a nice blur around the box.
+
+box-shadow: 0 0 0 4px rgba(24, 117, 255, 0.25);
+  - This can be used to put a nice shadow around the input field in the form when it gets focus
+
+Best practice for text shadow:
+  - We should set the shadow color to rgba(0, 0, 0, 0.2) which will mix in well with the background color.
+  - This is essentially a semi-transparent black color. We can set the alpha value as desired.
+        text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2)
+
+========================================================================================
+                                          Layout
+========================================================================================
+
+---------------------------------------- Box model ----------------------------------------
+
+- Each element has content, padding, border and margin, boxed inside each other respectively.
+
+- Margine property is used to separate elements. Margine collapsing is applied between neighbouring elements.
+
+- Padding property is used to add space between the border and content area of the element
+
+------------------------------------- Sizing elements -------------------------------------
+
+- By default, the width and height properties are applied to the content box. Any padding and 
+  border will be additional to the size of the visible box. The margin property will not impact
+  the size of the visible box, it only moves the box away from neighbouring elements.
+
+- To address the above issue, we use 
+      box-sizing: border-box
+  This will limit the size of the visible box including the padding and border to the specified
+    width and height. So, the content size will be determined by the specified width and 
+    height minus the size of padding and border.
+
+- It is common practice to apply box-sizing: border-box to all elements. Hence, we can 
+    set this property for all elements. In this case, we use universall selector.
+  However, universall selector does not apply to pseudo elements. To apply the property
+    to all elements and pseudo elements, we use the following:
+      *, *::before, *::after {box-sizing: border-box}
+
+- Width and height properties apply to block-level elements (eg. <div>), by default. So, if we use these
+    properties with inline elements, eg. <span>, they will not apply by default. 
+  In order to apply width and height to inline elements, we use the display property. By default, the 
+    display property is set to 'block' for block-level elements and to 'inline' for inline elements.
+    We can set the display property to 'inline-block' which essentially means that the element behaves
+    like a block element inserted inline. This way, the width and height properties can be applied to 
+    inline elements.
+      display: inline-block;
+    
+- When we use two <span> elements next to each other, unless they are attached to each other with no
+  space, they will be shown inline with a space between them.
+  
+---------------------------------------- Overflowing ----------------------------------------
+
+If we have a fixed-size container (eg. fixed by width and height properties) and there is excessive
+  content in the container, there will be an overflow. By default, the overflow is visible. 
+We can set what should be done in case of overflow by using the overflow property. It can be set to
+visible (the default value), hidden, scroll, auto.
+      overflow: scroll;   (scroll bars are always shown whether or not there is overflow)
+      overflow: auto;     (scroll bars are only shown in case there is overflow)
+
+We can set overflow for x and y axis. If interested, search on Google for details.
+
+------------------------------------- Measurement Units -------------------------------------
+
+Abolute units:
+px  (pixels)
+
+Relative units:
+%       (relative to the size of the container)
+vw, vh  (relative to the viewport) viewport width & viewport height
+em, rem (relative to the font size)
+
+Example:
+  50vw    50% of the viewport width
+  100vh   100% of the viewport height
+  10em    10 times the font size of the current element
+  10rem   10 times the font size of the root element (by default it is 16px)
+
+- The problem with em is that if the current element does not have a font size, we
+  have to trace up the inheritance hierarchy to determine the font size. In this case,
+  we can use rem which specify the size relative to the root element.
+
+------------------------------------- Positioning -------------------------------------
+
+- We can position an element by first setting the 'position' property.
+  - Relative: relative to the element's normal position
+  - Absolute: relative to the parent
+  - Fixed: relative to the viewport
+
+- The default value is position: static; which means it is not positioned (ie. appears exactly
+  in its normal position)
+- The size of the positioned element can be set by either width and height, or by using the 
+  combination of left and right and/or top and bottom. If the size of the element is fixed 
+  to certain width and height by another selector, but we want a particular element to have 
+  a size set by right/left properties, then we can use:
+        width: auto;
+
+- position: relative;
+  - We can position the element relative to its normal position. This does not impact the other
+    elements on the page.
+  - For example, we can add positive or negative space to the left:
+        position: relative;
+        left: 4rem;
+        top: 2rem;
+  - Relative position does not impact the position of other elements on the page.
+  - When there is an overlap with other elements, the elements appearing later in the DOM will
+    appear on the top. However, we can change this by assigning z-index property. This 
+    essentially determines the position of the element on the z axis (prependicular to the screen).
+    The default value for z-index is 0. We can assign positive or negative numbers to it.
+        z-index: 1;
+
+- position: absolute;
+  - We can position an element relative to its container with absolute positioning. This will 
+    impact the position of other elements (see below).
+  - It is essential that the container has its position set to 'relative' so its children can 
+    have aboslute position.
+  - When we absolutely position an element, that element is removed from the normal flow of the page
+    and all other elements are rendered as if the absolutely positioned element did not exist.
+  - Example: this will put the box at the bottom right corner of the container
+        position: abolute;
+        right: 0;
+        bottom: 0;
+
+- position: fixed;
+  - With position: fixed; we can position an element relative to the viewport.
+  - Using fixed positioning, the element may appear outside its container.
+  - This could be useful for example if we want our nav bar to appear on the top even when the 
+    user is scrolling down.
+  - Example: this will put the box at the top of viewport, even if we scroll down.
+        position: fixed;
+        top: 0;
+
+------------------------------------- Floating Elements -------------------------------------
+
+- Float is not the best practice and there are alternatives such as Flexbox and Grid to use.
+
+- We can use float property to float an element. For example:
+        float: left;
+  This way, the subsequent elements will flow around this element.
+
+- Clear
+  We can use clear property so a subsequent element does not flow around the floating element:
+        clear: both;
+  The above will clear the element from both left and right, so it will not be flowing around any
+  element that is floating on the right or left side. 
+
+- Parent collapsing
+  The parent/container element does not see the floating elements. So the container size is not 
+  determined by the size of the floating element. In case their content shrinks to less than the
+  size of the floating element, the container size also shrinks. This is called parent collapsing.
+
+  The best practice is to create a class, typically named as clearfix and use pseudo element ::after
+  to add an empty block element with clear:both property after the container. This is the implementation:
+        .clearfix::after {
+          content: '';
+          display: block;
+          clear: both;
+        }
+
+  So, whenever we are floating an element in a container, ensure that we assign clearfix class to that
+  container.
+  However, as it is noted above, floating is not considered as best practice and should be avoided.
+
+--------------------------------------- FlexBox ---------------------------------------
+
+FlexBox or Flexible Box Layout is a method to layout elements in one direction ie. row or column.
+
+display: flex
+  - The display property must be set to flex for the container.
+  - flex is a subset of block. So, the container will occupy the entire horizontal space.
+    In other words, from outside, the container is like a block-level element.
+
+flex-direction
+  - flex-direction property can be set to any of the followings:
+      flex-direction: row;
+      flex-direction: row-reverse;  (this is useful for right-to-left nav bar)
+      flex-direction: column;
+      flex-direction: column-reverse;
+
+Axes
+  - We use axes to align elements in the container
+  - There are two axes: main (primary) and cross (secondary)
+  - If main is set to row, the cross will be column and vice versa
+
+Aligning items
+  - justify-content (along the main axis)
+  - align-items (along the cross axis)
+  - align-content (used when there is multiple-line content - see below)
+
+  - To align, we use:
+      flex-start (default value)
+      flex-end
+      center
+      space-evenly (spacing items with equal spacing between them)
+      space-between (first and last items are push to the ends of the axes, remaining items spaced evently between them)
+      space-around (some space around the first and last items, remaining items spaced evenly)
+
+Multiple lines (flex-wrap & align-content)
+  - The default behaviour of flex container is to fit all elements in one line. So, if the 
+    number of element increases, they will be squashed to fit into one line.
+  - The flex-wrap property is used to solve the above issue. The default value is nowrap. 
+    if we set it to wrap then items will be placed on multiple lines to maintain their
+    original size.
+          flex-wrap: wrap;
+  - We can use align-content property to align multiple-line content:
+          align-content: centre;
+
+align-self
+  - To align an item individually within a container, we use align-self property.
+          align-self: flex-start;
+  - So align-self is applied to an individual item, not the container. 
+  - align-self will override the value assigned by algin-items.
+
+Sizing items:
+  - The sizing properties are only applied to individual items not the container.
+  - There are four properties:
+        flex-basis (the intitial size of a flex item)
+        flex-grow  (the growth factor)
+        flex-shrink (the shrink factor)
+        flex  (contains above three properties)
+  - flex-basis 
+      - flex-basis sets the size of the item along the main axis (either x or y)
+      - flex-basis overrides the value set by either width or height (depending on main axis direction)
+      - flex-basis: auto; this implies that the size can be determined by width/height properties.
+  - flex-grow
+      - it allows the items to grow in size (along the main axis) to take up the available space.
+      - its value is 0 by default. It can be any number. It does not accept units.
+      - If the growth factor of item A is bigger than item B, item A will grow more than item B.
+      - If the growth factor of item A is twice item B, item A will GROW twice item B. Their ultimate
+        sizes will depend on their initial size and growth factor. Essentially, the available empty
+        space will be added to items depending on their growth factor. Item A will get twice additional
+        size compared to Item B.
+  - flex-shrink
+      - flex-shrink tells the browser how items should shrink if there is not enough space to fit
+        them in the container.
+  - flex
+      - If it is assigned only one value, this value will be flex-grow.
+      - If it is assigned two values, the second value could be either flex-shrink (number with
+        no unit) or flex-basis (number with a unit)
+      - If it is assigned two values, first is flex-gorw, second is flex-shrink and third is flex-basis.
+  
+----------------------------------------- Grid -----------------------------------------
+
+Grid is used to lay out items in both directions (row and column). For example it can be used
+  for the layout of our website.
+
+In the DevTool, we can click on 'grid' shown on the container (Elements tab) to see the grid.
+  We can then use Layout tab to set overlay display settings.
+
+- To define a grid:
+  - display: grid
+  - grid-template-rows
+  - grid-template-columns
+
+  Example:
+      Method 1:
+        grid-template-rows: 100px 100px 100px;
+        grid-template-columns: 100px 100px;
+      
+      Method 2:
+        grid-template-rows: repeat(3, 100px);
+        grid-template-columns: repeat(2, 100px);
+        
+      Method 3:
+        grid-template: repeat(3, 100px) / repeat(2, 100px);
+
+      Method 4:
+        grid-template: repeat(3, 100px) / 100px 30% 70%;
+          (the problem with the above is that the first column has an absolute length of 100px,
+          and the second and third colums will have 30% and 70% of the entire width of the container, 
+          so there will be an overflow. The problem arises from the fact that % is based on the width
+          of the container)
+
+      Method 5:
+        grid-template: repeat(3, 100px) / 100px 30fr 70fr;
+          (fr means fraction of available empty space. 30fr means 30% of the available free space)
+          (as best practice, we should avoid % and use fr when sizing the grid rows and columns)
+
+      Method 6:
+        grid-template: 100px auto 100px / 30fr 70fr;
+          (here auto means that the middle row will take up the entire available space)
+
+      Method 7: 
+        We do not have to specify the number of rows if we are displaying a certain number of
+        elements (eg. photos). We can only specify the number of colums and then new rows will be 
+        added automatically as photos are added to the grid (see Exercise PhotoGallery).
+
+- Alignment
+  - Alignment of the grid inside its container
+    - justify-content (along the horizontal axix)
+    -align-content    (along the vertical axis)
+
+  - Alignment of items inside grid cells
+    - justify-items (along the horizontal axix)
+    - align-items   (along the vertical axis)
+
+  - To align, we set the above properties to:
+      start
+      end
+      center
+      stretch (default value for justify-items and align-items)
+
+  - If justify-items and align-items are set to stretch (which is the default value), 
+    in the absence of specified width/height properties, the item will stretch to fill in 
+    the entire grid cell along the x/y axis.
+  
+- Gap
+  - To apply gap between rows and columns, we use these properties for the container:
+      row-gap
+      column-gap
+      gap (if assigned with a single value, it will be used for both row and column gaps)
+
+- Placing items
+  - By default, items are placed from top left to bottom right in the grid.
+  - By default, each item will take one cell.
+  - To specify the location of items in the grid, we use these properties for individual items:
+      grid-row
+      grid-column
+      grid-area (shorthand for grid-row and grid-column)
+  
+  - If only one argument is assigned, that will be the column number that we want the item to be placed in. 
+  - If the item is taking more than one cell, we can provide the line numbers for the starting and ending cell:
+            grid-column: 1 / 3;  (items starts from line one and ends at line 3)
+    We can also use span to specify how many cells the item spreads over:
+            grid-column: 1 / span 2; (item start from line one and spans over 2 cells)
+  - When grid-area is used, we must assgin four numbers. The first two numbers specify the starting row/column
+    and the second two numbers specify the end row-column. 
+            grid-area: 1 / 1 / 1 / 3 (items starts from row line 1 and column line 1 and spans to row line 1 and column line 3)
+    Since using grid-area this way is not readable, we would better use grid-column and grid-row to assign column and row line numbers.
+  
+- Placing items in named areas
+  - We need these two properties:
+        grid-template-areas  (used for the container to define different areas)
+        grid-area  (used for individual items)
+  - Example:
+        grid-template-areas:
+          "header  header"
+          "sidebar main"
+          ".       footer";
+
+    In the above template, we define each cell of the grid. Note that if we want a cell not to 
+    contain any content, we us . for its name.
+
+  - Now, we can use grid-area to assign an item to a named area (note we do not use "" in the area name here)
+        grid-area: header; (this will place the item in the cells named header)
+
+-------------------------------------- Hiding Elements --------------------------------------
+
+There are two ways to hide an element with different outcomes:
+
+display: none;        (this will completely remove the element from the page as it was never there)
+visibility: hidden;   (this will hide the element in its place. So, its place is held on the page but the element is not shown)
+
+-------------------------------------- Media Queries --------------------------------------
+
+- With media queries, we can query certain properties of the device (eg. type, width, etc)
+  and provide styles that only apply if those properties are met.
+
+- With media queries, we can build responsive designs, including one of these types:
+    - Desktop first
+    - Mobile first
+
+- The mobile first approach means that we design the application for mobile, then adjust the layout
+  for tablets and desktops.
+
+- The majority of web community favors mobile first approach.
+
+- @media
+    - We use @media to make a media query
+    - The first argument after @media is the type of the target device and can be screen or print
+    - Then we can have multiple conditions each in () and separated by 'and'. These conditions are 
+      also referred to as the breakpoint.
+    - Once the conditions are met (breakpoint is reached), the styles inside the query will be 
+      applied which will override the previous rules.
+    - The standard breakpoint for tablets is 768px.
+
+    Example:
+        @media screen and (min-width: 600px) {}
+    
+    - We can have multiple media queries, for example one for desktop and one for tablets.
+    - For 'print' traget device, we can set the styles to be in absolute units. For example:
+        font-size: 12pt;
+        padding: 0.5cm;
+
+========================================================================================
+                                      Typography
+========================================================================================
+        
+------------------------------------ Styling Fonts --------------------------------------
+
+Three main categories of fonts include:
+  - Serif (used for books, magazines, etc) Georgia, Times New Roman
+  - Sans-serif (modern fonts) Arial, Avenir, Futura, Helvetica, Roboto
+  - Monospace  (used for codes) Consolas, Courier, Ubuntu
+
+font-family:
+  - The font families suggested by VS Code are web safe fonts, which means they are available in most 
+    computers.
+  - Typically we use a font stack for font-family. It comprises multiple fonts. The browser will apply
+    the first font if it is installed on the user's computer. Otherwise, it will go on to the next one.
+    The last font is typically a generic font (eg. sans-serif) to give flexibility to the browser in case
+    previous fonts were not available.
+    
+font-weight:
+  - We can either assign a value (100-900) or use keywords (eg. normal, bold, bolder, etc);
+
+font-style:
+  - We can set this to normal, italic, etc.
+
+font-size:
+  - We can numeric values including absolute and relative values (eg. 10px, 2rem, etc) or 
+    keywords (eg. small, medium, etc).
+
+color: 
+  - It is better not to use pure black for font color. We can use dark gray such as #111 or #222.
+
+--------------------------------- Embedding Web Fonts -----------------------------------
+
+Step 1: Have the font in WOFF and WOFF2 formats
+    - We need to have the fonts in WOFF and WOFF2 formats as they are optimised for web.
+      WOFF2 is more compressed than WOFF. Most modern browsers support the WOFF type.
+    - If direct download is not possible, download TTF files and convert them to WOFF and WOFF2.
+      To do this, go to fontsquirrel.com and choose Generator menu. Upload the TTF font and choose
+      'optimal' option. 
+    - We need to have the fonts for the styles we use, e.g. normal, bold, italic, etc
+
+Step 2: Insert font files in project folder
+    - Create a fonts folder inside css folder. Then create a folder with the fonts name and 
+      insert the font files in there. 
+          css > fonts > open-sans >
+
+Step 3: Add @font-face rules to the top of our styles.css
+    - fontsquirrel.com will also create a stylesheet file when converting TTF to WOFF. We can
+      use this file to add required information to our styles.css file.
+    - We need to add the followings to the top of our styles.css file (note both normal and bold fonts):
+          @font-face {
+            font-family: "opensans";
+            src: url("css/fonts/open-sans/opensans-regular-webfont.woff2") format("woff2"),
+              url("css/fonts/open-sans/opensans-regular-webfont.woff") format("woff");
+            font-weight: normal;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "opensans";
+            src: url("css/fonts/open-sans/opensans-bold-webfont.woff2") format("woff2"),
+              url("css/fonts/open-sans/opensans-bold-webfont.woff") format("woff");
+            font-weight: bold;
+            font-style: normal;
+          }
+  
+    - We supply both WOFF2 and WOFF, respectively. If the browser does not support WOFF2, it
+      will then download the WOFF format.
+
+Step 4: Use it in font-family property
+    - Add the custom font to the beginning of the font stack:
+            font-family: "opensans", Arial, Helvetica, sans-serif;
+
+--------------------------------- Flash of Unstyled Text -----------------------------------
+
+The flash of unstyled text (FOUT) refers to the period that the browser is busy downloading the custom
+  fonts from the server and hence our website text may be shown with a different font or may become
+  invisible to the user. This is particularly important for slow connections, such as 3G on mobile phones.
+
+To control the behaviour of the browser in this situation, we can use the property called font-display.
+      font-display: swap; 
+        (The page will be initially loaded with the fallback font and then swapped with the custom font.
+         The issue is that if it takes 10s for the font to be downloaded, the font will be swapped after
+         10s, in the middle of user reading the text. This can cause layout shift and hence give a bad
+         user experience.)
+      
+      font-display: fallback;
+        (This will tell the browser to use the fallback font whenever there is slow connection for the 
+         custom font to be downloaded. This will give better user experience than the swap method.)
+
+      font-display: optional;
+        (This means that the custom font is optional and nice-to-have. The browser then treat it similar
+         to the fallback option (ie. if the connection is slow, it renders the text with the fallback font).
+         But it will also download the custom font in the background and put it in the cashe. So the next
+         time the page is loaded, the page will be shown with the custom font.)
+
+One other method we can use to reduce the FAUT issue is the optimise the font for its use. When we convert
+  the TTF type to WOFF, we can choose the Expert setting. Then, choose the Subsetting option to Custom 
+  Subsetting and choose the characters that should be included in the font. For example, we can ignore 
+  math symbols or lower and upper accents etc.
+
+-------------------------------------- Font Services ----------------------------------------
+
+- We can use free fonts using Google Web Fonts (fonts.google.com)
+
+- Paid fonts generally look nicer. Paid fonts are available for example in:
+    - Adobe Fonts (fonts.adobe.com)
+    - fonts.com
+    - fontdeck.com
+
+- When using Google fonts, we can use the 'Pairings' tab to paid our chosen font with another font. 
+  Once chosen (by clicking on the + icon), these fonts will all be included in the link generated by 
+  Google to access the fonts (for example, Roboto bold with Open Sans regular). [pairing is no longer available?!!!]
+
+  On the top right corner of the page, we can click on the panel to see instructions for using our
+  chosen fonts. Then copy the two link elements and paste them in the Heading of our HTML markup before
+  the links to the stylesheets. Because the fonts must be downloaded before they are used in the stylesheets.
+
+  The first link with rel:"preconnect" is for optimisation and tells the browser that our page is going to 
+  establish a connection with the specified domain.
+
+  The second link is a reference to a stylesheet. If we follow the link, we can see the font-face rules.
+
+  Now, we can use these fonts like a regular font. Make sure you provide web safe fonts as fallback option.
+
+  As for FOUT, the value for font-display property is provided in the query string parameters. The defaul 
+  value is 'swap'. But as we saw above, a better alternative is 'optional'. We can therefore change the
+  query string in Google font url and replace 'swap' with 'optional'.
+
+------------------------------------ System Font Stack --------------------------------------
+
+We can use System Font Stack which is the default font used by an operating system installed on the user's
+computer/phone. Of course this will be different on different devices/operating systems.
+
+For example, system font stack for macOS is San Fransisco, for Windows is Segoe UI and for Android is Roboto.
+
+The advantages include:
+  - Can boost performance (since the font already exist on the user's computer)
+  - No FOUT
+  - Native look (user is already familiar with the look)
+  - Overall: better experience
+
+To use System Font Stack, for the font-family property, type -apple and choose the option that VS Code suggests:
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+--------------------------------------- Sizing Fonts -----------------------------------------
+
+The common best practice is to set the font size relative to the HTML element. We typically use rem for font-size.
+          1rem = 1 x font size of the root element (ie. HTML)
+  This will enable us to change the font size in responsive design by only changing the font size in the HTML 
+  element (eg. from 62.5% to 100% or from 100% to 130%).
+
+  Example:
+
+  @media screen and (min-width: 600px) {
+    html {
+      font-size: 130%;
+    }
+  }
+
+At the beginning of your project, go to type-scale.com and find the right font size for our headings.
+
+--------------------------------------- Vertical Spacing -----------------------------------------
+
+There are two properties we use for vertical spacing: margin and line-height
+
+margin
+  - We should respect the Law of Proximity which states that: objects that are closer are perceived to be related.
+  - For example, the space between the heading and the previous paragraph must always be higher than the space
+    between the heading and its below paragraph.
+  - Remember the margin property takes trbl values: top, right, bottom, left
+  - We can define the margin for each heading. For example:
+        margin: 3rem, 0, 1rem;   (since we did not supplu the left value, it will be assumed to be the same as right)
+
+line-height
+  - The general rule-of-thumb for line-height is that it should be 1.5 times the font-size. However, it is absolutely
+    a design choice and there is no best practice around it.
+
+  - If we specify the line-height without any unit, the browser will assume it as a multiplier of the font-size.
+    So if the font size is 1rem, then the line-height will be 1.5rem.
+
+--------------------------------------- Horizontal Spacing -----------------------------------------
+
+There are three properties we use for horizontal spacing: letter-spacing, word-spacing, width
+
+letter-spacing
+  - We normally express this in absolute unit such as px. 
+        letter-spacing: 1px;
+
+  - We can use negative values for letter-spacing (eg. -1px). This is specially used for headings.
+
+word-spacing
+  - We normally express this in absolute unit such as px. 
+        word-spacing: 3px;
+
+width
+  - We use width property for <p> to set the number of characters in each line inside a paragraph.
+  - Research shows that the optimum number of characters per line is between 50-70
+  - We use ch unit to specify width for <p>. 1ch is equivalent to the width of one 0 character. 
+    A good rule-of-thumb is to use 50ch for width because some characters such as i or l take
+    less space than 0. So 50ch is equivalent to between 60-70 characters.
+
+--------------------------------------- Formatting Text -----------------------------------------
+
+text-align
+  - This is for horizontal alignment of the text.
+  - Best practice is either left or centre. Right is used for right-to-left languages. 
+  - We should avoid justify since it puts uneven white space in the text.
+
+text-indent
+  - This is for adding indentation to the first line of the text.
+  - It is common practice to add indentation not to the first paragraph inder the heading, but
+    in all subsequent paragraphs. We can use the selector p + p for this. This means the style
+    will be applied to all paragraphs appearing after a paragraph (automatically excludes the 
+    first paragraph)
+        p + p {text-indent: 1rem;}
+
+text-decoration
+  - text-decoration: underline  => adds underline to the text
+  - text-decoration: line-through  => useful for showing original price next to discounts
+
+text-transform
+  - We can convert the text to lowercase, uppercase, capitalize, etc
+  - Capitalize will capitalize the first letter of every word => useful for headings
+
+white-scpace
+  - This is used to control wrapping.
+  - white-space: nowrap;  => allows text to overflow beyond the border (eg. all text will appear in a single line)
+
+Truncating text:
+  - We need to set four properties:
+      width: 50ch;                => limits the number of characters (anything more than 50ch will be considered overflown) 
+      white-space: nowrap;        => text will appear in a single line
+      overflow: hidden;           => overflown text will be hidden
+      text-overflow: ellipsis;    => we get ... at the end
+      
+Multi-column text
+  column-count: 2;                => sets the number of columns
+  column-gap: 2rem;               => sets the gap between columns
+  column-rule: 3px dotted #999;   => sets a dotted line between columns
+
+direction
+  - This is used to specify left-to-right and right-to-left languages.
+  - Default value is ltr
+  - It should be often set in the body element to specify the behaviour for the entire page.
+
+========================================================================================
+                                        Images
+========================================================================================
+        
+-------------------------------- Image Types and Formats ----------------------------------
+
+There are two types of images: Raster and Vector images.
+
+Raster images
+  - Come from cameras/scanners
+  - Formats: JPG, PNG, GIF, WebP, etc
+  - More pixels => larger files size
+
+Vector images:
+  - Created in software (eg. Illustrator)
+  - Format: SVG (scalable vector graphics)
+  - Look sharp at any size
+
+- WebP images are smaller in size, but they are not supported by Internet Explorer
+- Except JPG, other image types can be transparent and can also be used in animations
+- GIF only supports 256 colors, but JPG, PNG and WebP support 16M colors
+
+------------------------------------ Content Images ---------------------------------------
+
+- The alt="" property of an image should either be filled with a descriptive text or if the image
+  is a decorative image, then the alt="" should be left blank. We should not remove the alt property
+  otherwise the screen reader with read the file name for the user.
+
+---------------------------------- Background Images --------------------------------------
+
+- Often, background images are used for decorative purposes. They can be applied to the body element,
+  a section, header, etc.
+
+- We can use background or background-image properties to add a backgrount image (both work the same).
+
+          background: url()  => inside () the relative or absolute address of the image
+
+background-repeat
+  - By default, the background image will be repeated horizontally and vertically to cover the viewport.
+  - background-repeat can take the following values:
+      background-repeat: no-repeat;   => no vertical/horizontal repeat of the background image
+      background-repeat: repeat-x;    => allow repeat of background image along the x axis
+      background-repeat: repeat-y;    => allow repeat of background image along the y axis
+  
+background-position
+  - By default, the background image will be placed from the top left corner of the screen.
+  - We can use background-position to specify horizontal and vertical adjustments. Positive values will
+    shift the image to right and bottom, and negative values to the opposite direction. We can use both
+    absolute and relative values:
+      background-position: 100px 100px;  => shifting to right by 100px and to bottom by 100px
+      background-position: 100% 0;       => shifting to right side of the container
+      background-position: 100% 100%;    => shifting to the bottom left of the container
+
+background-size
+  - This will set the size of the background image. The first value is width and second value is height.
+  - Values could be absolute or relative.
+      background-size: 100% 100%;       => the background image will cover the entire area of the container
+      background-size: cover;           => cover the entire area of the container while keeping its aspect ratio
+      
+background-attachment
+  - This will set the behaviour of background image with scrolling.
+      background-attachment: fixed;     => fix the background on the viewport, so it will not move with scrolling
+
+---------------------------------------- CSS Sprites --------------------------------------------
+
+- This approach is an optimisation that enables the browser to send a single request to the server to obtain
+  several images. Essentially, we are combining all images into a single image, then that combined image
+  is served to the browser. Then, we use css sprites to render the combined image part-by-part. Essentially,
+  for each constituent image, we are only showing a part of the combined image and hiding other parts of it.
+
+- This approach is mostly useful if we are downloading several small images. For example, if we are showing
+  several icons or logos on our page.
+
+- To do this, use one of the css sprites tools (such as cssspritestool.com) to create a css sprites.
+  Once css sprites is generated, we get a combined image and css-sprites stylesheet. Inside the css-sprites
+  stylesheet, a bunch of classes have been generated, each correspond to a single image we supplied.
+  We need to update the image path and then can copy all these classes into our stylesheet. Then, we need
+  to use the <span> element to display every image by assigning the associated class to <span>.
+
+- Drawbacks of using css sprites:
+  - The combined image file size could get too large, hence difficult to download from the server.
+  - Sprites are not flexible. If we change one of the images, the combined image must be regenerated.
+
+------------------------------------------ Data URLs --------------------------------------------
+
+- Data URL is an optimisation method that allows images to be coverted to code inside the HTML markup
+  rather than being fetched from the server. There are several drawbacks to this methos, so it is not
+  really recommended:
+    - The size of embedded code will be higher than the size of the resource
+    - Increased complexity
+    - This method is very slow on mobile devices.
+
+- So, this method is not recommended.
+
+------------------------------------------- Clipping --------------------------------------------
+
+- We can clip our image using clipping methods in CSS. Essentially this is to crop an image to a certain shape.
+- Search for css clip generator or visit bennettfeely.com/clippy
+- These websites generate a clip-path property which we can use in our CSS to clip images.
+
+------------------------------------------- Filters ---------------------------------------------
+
+- To see the full list of available filters, search for css filter functions and visit the page
+  provide by developer.mozilla.com 
+
+- Internet Explorer still does not support the filter property.
+
+- There are several filter functions available in CSS, such as:
+    - grayscale
+    - blur
+    - contrast
+    - brightness
+    - saturate
+
+- Filter is applied by using the filter property. Multiple filter can be applied.
+      filter: grayscale(70%) blur(3px);
+
+-------------------------------- Supporting High-density Screens ---------------------------------
+
+- Note that this method is used when we have a fixed image size in CSS, eg. image width fixed to 400px.
+
+- Logical resolution is how the device's screen behave. 
+
+- Device Pixel Ratio (DPR) is the ratio of logical pixels to physical pixels. High density screens
+  have a DPR > 1
+
+- The physical and logical resolution often defer in modern devices. For example, iPhone 4 has a 
+  physical resolution of 960x640, but its logical resolution is 480x320. So, iPhone 4's DPR is 2.
+  This essentially means that it renders every one logical pixel over 2 physical pixels. So, a 
+  photo with 320x320px resolution (ie. logical resolution) will be rendered on 640x640 pixels physically, 
+  taking the entire width of iPhone 4. This means that the image will be scaled up to twice of its
+  size making it a little bit blury. See the below example.
+  
+  Therefore, if we have a high density screen, we need to provide a higher resolution version of the
+  photo to take advantage of the screen's density (ie. have sharp images rather than blury images).
+
+- CSS is always based on logical resolution. So, when we say 200px in CSS, we are referring to the 
+  logical resolution. For example, 200px in CSS will take up 400px in iPhone 4 with DPR of 2.
+
+- Only for important images, for example, the images on our homepage, we should have several versions
+  of the image with different resolution to render on devices with different DPR. We should not do
+  this for all images on our website as it will be overkill.
+
+- The convention for naming images for different DPR is to use @x2, @x3, etc. 
+
+- Example:
+
+  We want to create versions of an image for DPR=1, 2, 3 screens. Assume the image has original size of
+    2000x2000px. 
+  Assume that we want to render the image with 400px width in CSS.
+  Hence, for a DPR=1 screen we need 400x400px, DPR=2 screen 800x800px and DPR=3 screen 1200x1200px.
+  We can create three versions of the image in Photoshop and name them abcd.jpg, abcd@2x.jpg and 
+    abcd@3x.jpg as follows:
+
+    Files in the images director:
+      abcd.jpg        => 400x400px
+      abcd@2x.jpg     => 800x800px
+      abcd@3x.jpg     => 1200x1200px
+
+    CSS:
+      .thisClass {width: 400px;}
+    
+    HTML markup:
+      <img
+        src:"images/abcd.jpg"
+        alt:"...."
+        class:"thisClass"
+        srcset:"
+          images/abcd.jpg 1x,
+          images/abcd@2x.jpg 2x,
+          images/abcd@3x.jpg 3x
+        ">
+
+    With the above markup, if the screen DPR=1, then abcd.jpg will be rendered, if DPR=2, 
+    then abcd@2x.jpg will be rendered, and if DPR=3, then abcd@3x.jpg will be rendered.
+
+-------------------------------------- Resolution Switching ---------------------------------------
+
+- If we have set a relative image size in CSS, this method can be used e.g. width=100vw;
+
+- See Example 2 below for best implementation.
+
+- https://responsivebreakpoints.com/ to generate different versions (resolution) of an image for 
+  a responsive design. It will also create the CSS code.
+
+- The problem:
+  If we use the method mentioned above under 'Supporting High-density Screens', then regardless of
+  the screen resolution, a same image will be supplied for all screens with DPR=2. So if a mobile
+  and a desktop have both DPR=2, image abcd@2x.jpg with 800x800px resolution will be provided (see
+  example above). The browser will then stretch the image to cover 100% of viewport. This will
+  make the desktop image blury. This problem is called resolution switching.
+
+- Solution:
+  The solution is to provide different versions of the image for different screen sizes. It is not
+  practical to provide a version for each screen size available in the market, but we can instead
+  provide perhaps three versions of the image small, medium and large. 
+
+  We can tell the browser the actual pixel size of our images and let the browser pick up the best
+  image based on the screen resolution and DPR. To do so, in the 'srcset' property, we specify the
+  resolution of our image files with 'w' suffix.
+
+  Example 1:
+
+    CSS:
+      .thisClass {width: 100vw;}
+    
+    HTML markup:
+      <img
+        src="images/abcd.jpg"
+        alt="...."
+        class="thisClass"
+        srcset="
+          images/abcd.jpg    400w,      => we tell the browser that abcd.jpg has 400px width
+          images/abcd@2x.jpg 800w,
+          images/abcd@3x.jpg 1200w
+        ">
+
+  Example 2:
+    In this example, we specify the width of the image in the HTML markup (not in the CSS). 
+    This enables us to render the image at different % of viewport depending on the screen size.
+
+    CSS:
+      .thisClass {}
+    
+    HTML markup:
+      <img
+        src="images/abcd.jpg"
+        alt="...."
+        class="thisClass"
+        srcset="
+          images/abcd.jpg    400w,    => we tell the browser that abcd.jpg has 400px width
+          images/abcd@2x.jpg 800w,
+          images/abcd@3x.jpg 1200w
+        "
+        sizes="
+          (max-width: 500px) 100vw,   => if max-width is less than 500px, show the image at 100% of viewport width
+          (max-width: 700px) 50vw,    => if max-width is less than 700px, show the image at 50% of viewport width
+          33vw                        => otherwise, show the image at 33% of viewport width
+        ">
+
+------------------------------------------- WebP Image Format -----------------------------------------
+
+- WebP image format has significantly smaller size than JPG
+
+- WebP format is not supported by IE
+
+- To convert JPG to WebP, go to cloudconvert.com
+
+- To ensure that IE users are also able to see the image, we should use <picture> element:
+  (note that we can use srcset attribute to supply different sizes if we wish to do so)
+
+    <picture>
+        <source type="image/webp" srcset="images/meal.webp">    => if the browser supports WebP, the first option will be rendered.
+        <source type="image/jpeg" srcset="images/meal.jpg">     => if the browser does not support WebP, this will be rendered
+        <img src="images/meal.jpg" alt="...">                   => this shows the alt="" and useful if the browser does not support <picture> or <source> elements
+    </picture>
+
+-------------------------------------------- Art Direction -------------------------------------------
+
+- Art direction means that a cropped version of an image can be shown when the screen size reduces. 
+  For example, if the image has a lot of details, the details are only visible on larger screens and so 
+  on mobile devices, the cropped version of the image can be displayed (so it is zoomed and provides more details).
+
+    <picture>
+        <source media="(max-width: 500px)" srcset="images/meal-cropped.jpg">
+        <source media="(min-width: 501px)" srcset="images/meal.jpg">
+        <img src="images/meal.jpg" alt="...">
+    </picture>
+
+--------------------------------------- Scalable Vector Graphics -------------------------------------
+
+SVG files are great for icons, logos and background images because:
+  - they have very small size
+  - they do not loose resolution when scaled up, so no need to provide several versions of different resolutions
+
+- svgbackgrounds.com provides great SVG images for background for free.  
+
+---------------------------------------------- Icon Fonts -------------------------------------------
+
+- Icon Fonts provide icons instead of letters.
+
+- Most popular icon fonts are:
+    - Font Awesome
+    - Ionicons
+    - Material Design Icons
+
+- To use icon fonts, we need to add their script element into our HTML heading section. Then display 
+  an icon by assigning the specified class to either <i> or <span> elements. Of course, we can increase
+  their size and change their color in a similar way as normal fonts in CSS (eg. using font-size and color
+  properties).
+
+========================================================================================
+                                        Forms
+========================================================================================
+        
+-------------------------------- Creating a Basic Form ----------------------------------
+
+<form>
+  - We create forms using <form> element
+  - The <form> element has action="" attribute which is used to define what action should be executed
+    once the form is submitted.
+  - Inside the <form> element, we have input fields, also called form controls. 
+  
+<input>
+  - The <input> element has a type="" attribute:
+    type="text"
+    type="email"   => this will give automatic email validation
+
+<label>
+  - We use <label> element to label the input fields inside our form.
+  - The <lable> element has a for="" attribute. If this is set to the id of the input field, when the user
+    clicks on the lable, the input field gets a focus.
+  - <label> is an inline element, so it will be shown on the same line as the input field. If we want the
+    inout field to appear below its label, set display="block" in CSS.
+
+<button>
+  - There are two common types for the button:
+    type="submit"  => once the buttom is clicked, the form will be submitted
+    type="reset"   => once the buttom is clicked, all input fields in the form will be cleared
+
+-------------------------------------- Styling Forms -------------------------------------
+
+Important notes:
+
+- We can use attribute selector to style a specific input field:
+    input[type="text"] {}
+
+- We often style the input field in its general state and when it gets focus:
+    input[type="text"] {}
+    input[type="text"]:focus {}
+
+- We use transition property to set the transition time for certain properties (see input element below)
+    transition: border-color 0.15s, box-shadow 0.15s;
+
+- In order to remove the default outline the browsers apply automatically to an input field when it gets
+  focus, we can use;
+    outline: 0;
+
+- To remove the the default outline the browsers apply automatically to buttons, we use these for 
+  button element:
+      border: 0;
+      outline: 0;
+
+- It is normal practice to set the cursor to pointer for button in hover status:
+        cursor: pointer;
+
+- The default box-sizing for <input> element is content-box. So, any padding we apply to an <input>
+  field, increases its width. To ensure that input fields and buttons have the same width, we need
+  to set box-sizing: border-box.
+
+- It's a common technique to set the width of input fields and buttons to 100% so they fill up
+  their container. We can then control their size through their container (in this case form-signin)
+
+***** The followin is a sample form and its styling *****
+
+************HTML markup**********
+
+<form>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" type="text">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email">
+    </div>
+    <button type="submit">Register</button>
+    <button type="reset">Clear</button>
+</form>
+
+***************CSS***************
+
+body {
+  padding: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.5rem;
+}
+
+label {
+  display: block;
+}
+
+input[type="text"],
+input[type="email"] {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-color: #7db0fb;
+  outline: 0;
+  box-shadow: 0 0 0 4px rgba(24, 117, 255, 0.25);
+}
+
+button {
+  padding: 0.5rem 0.7rem;
+  border-radius: 5px;
+  background-color: #0d6efd;
+  color: #fff;
+  border: 0;
+  outline: 0;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+-------------------------------------- CSS Frameworks -------------------------------------
+
+- A CSS framework is a libarary of CSS code that we can reuse to build beautiful modern-looking websites.
+
+- Drawback of using CSS frameworks: 
+  The library has to be downloaded (often with lots of styles not used in the application)
+
+- Popular libraries include: 
+  - Bootstrap
+  - Foundation
+  - Semantic UI
+  - UI Kit
+  - Materialize
+  - Milligram
+
+- Bootstrap
+  - To use Bootstrap, we need to add bootsrtap classes to our HTML elements
+
+- Milligram
+  - No need to add classes
+  - Quick styling without adding class to html elements
+
+---------------------------------------- Text Fields --------------------------------------
+
+Types of input field:
+  type="text"
+  type="number"     => the text field will only accept numbers
+  type="password"
+  type="date"
+  type="email"      => performs email validation
+
+Attributes:
+  value=""          => this is used to pre-populate the field with a text
+  placeholder=""    => puts a text inside the inout field until we start typing, which then will disappear
+  readonly          => user cannot change the value of the field. When the for is submitted, this value will
+                       be sent to the server.
+  disabled          => the input field cannot be selected. When the form is submitted, this value is NOT sent
+                       to the server
+  maxlength=""      => sets the number of characters the user can input
+  autofocus         => when the page is loaded, the input field will get automatic focus
+                       (useful for login/registration forms)
+
+<textarea>
+  - This element allows us to have an input field with multiple lines
+  - By default, resizing of the text field is allowed. We can disable resizing in CSS by:
+      textarea {resize: none;}
+  - The above attributes are available for <textarea>, except value="". Instead, the value can be written
+    between <textarea>Some text here.....</textarea>
+
+---------------------------------------- Data Lists --------------------------------------
+
+- We can create a datalist using <datalist> element. Inside, we use <option> element to define individual data.
+  We should give the datalist an id="", then use list="" attribute in the input field and set it to the id of 
+  our datalist.
+
+- It is good practice to turn off auto-complete feature of the browser when working with datalists. To do this,
+  we set the attribute autocomplete="off"
+
+- By default, the user can also write a text that is not in the list. To prevent this, we must use 
+  dropdown list.
+
+- We can obtain the selected option's id (to be sent to the server) using data-value="" attribute. Then, 
+  in JavaScript, we can read this attribute and send the id to the server. Note that, data-value="" is a 
+  custom attribute. In HTML, we can create custom attribute by adding data- as a prefix. 
+
+- Example:
+        <input id="name" type="text" list="countries" autocomplete="off">
+        <datalist id="countries">
+            <option data-value="1">Australia</option>
+            <option data-value="2">Canada</option>
+            <option data-value="3">India</option>
+            <option data-value="4">United Kingdom</option>
+        </datalist>
+
+- We cannot change the styling of datalist. So it will appear differently in each browser. 
+    If we define styles for datalist or option elements in CSS, they will not be applied and will be 
+    overridden by the browser defaults. 
+  If we want to have customised styling for the datalist, we must use JavaScript. For instruction, see
+    the <datalist> documentation on developer.mozilla.org website. (we need to set the list="" attribute
+    to empty string, then define custom styles for datalist and option elements. Then, we use JavaScript so
+    when the input element gets focus, we manually display the data list)
+
+---------------------------------------- Dropdown Lists --------------------------------------
+
+- We use <select> element to create dropdown lists. Inside it, we use <option> element to define
+  the list items.
+
+- The name="" attribute is used when submitting the form to the server. 
+
+- The id="" attribute is used when assigning a label to the dropdown list.
+
+- We can group the options using <optgroup> element - see example below. 
+  We use the label="" attribute to give a name to the group.
+
+- We use the value="" attribute to define the value to be sent to the server once the option is selected.
+
+- We can use 'selected' attribute in <option> element to pre-select an option when the list is loaded.
+    <option value="" selected>abcd</option>
+  
+- We can use 'multiple' attribute in <select> element to enable multiple selections. In this case, 
+  the dropdown list will be shown differently (all options will appear in a box)
+
+- Example:
+        <select name="" id="">
+            <option value="">Select a course...</option>
+            <optgroup label="Front-end Courses">
+                <option value="1">CSS</option>
+                <option value="2">HTML</option>
+                <option value="3">JavaScript</option>
+            </optgroup>
+            <optgroup label="Back-end Courses">
+                <option value="4">Node.js</option>
+                <option value="5">ASP.net</option>
+                <option value="6">Django</option>
+            </optgroup>
+        </select>
+
+---------------------------------------- Check Boxes --------------------------------------
+
+- We create a check box using <input> element with type="checkbox".
+  Then, below it, to create a text for the checkbox, we use <label> element with its for="" attribute
+    set to the id of the input field - see example below.
+
+- To pre-check a checkbox, we use attribute 'checked':
+    <input type="checkbox" id="front-end" checked>
+
+- We can use the 'disable' attribute to disable the checkbox.
+
+- Example:
+
+        <div>
+            <input type="checkbox" id="front-end">
+            <label for="front-end">Front-end</label>
+        </div>
+        <div>
+            <input type="checkbox" id="back-end">
+            <label for="back-end">Back-end</label>
+        </div>
+
+---------------------------------------- Radio Buttons --------------------------------------
+
+- We create a radio button using <input> element with type="radio".
+  Then, below it, to create a text for the radio button, we use <label> element with its for="" attribute
+    set to the id of the input field - see example below.
+  To group several radio buttons (note than only one radio button can be selected in a group), we give
+    the name="" attributed to all radio buttons inside the group - see example below.
+
+- To pre-select a radio button, we use attribute 'checked':
+    <input type="radio" id="silver" checked>
+
+- We can use the 'disable' attribute to disable the radio button.
+
+- Example:
+
+        <div>
+            <input type="radio" name="membership" id="silver">
+            <label for="silver">Silver</label>
+        </div>
+        <div>
+            <input type="radio" name="membership" id="gold">
+            <label for="gold">Gold</label>
+        </div>
+
+------------------------------------------- Sliders -----------------------------------------
+
+- To create a slider, for example to select a numeric value, we use <input> element with type="range".
+    Then, we set the min="" and max="" attributes and set a default value using value=""
+
+- We cannot show the value numerically next to the slider unless we use JavaScript.
+
+- Example:
+
+      <input type="range" min="10" max="90" value="20">
+
+----------------------------------------- File Inputs ---------------------------------------
+
+- To create a file input (ie. to upload a file) we use <input> element with type="file".
+    This will automatically create a button to choose a file. Once a file is chosen, its name 
+    will appear next to the button.
+
+- Attributes:
+    multiple               => multiple files can be selected
+    accept=".jpg, .png"    => the user can only select a specific file type (eg. only .jpg and .png files)
+    accept="image/*"       => the user can only select image files with any type
+    accept="video/*"       => the user can only select video files with any type
+    accept="audio/*"       => the user can only select audio files with any type
+
+------------------------------------ Grouping Related Fields ----------------------------------
+
+We can group related fields using one of these approaches:
+
+Approach 1:
+
+  <fieldset>
+      <legend>Billing Address</legend>
+      <input type="text" >
+      <input type="text" >
+      <input type="text" >
+  </fieldset>
+
+Approach 2:
+
+  <section>
+      <h2>Billing Address</h2>
+      <input type="text" >
+      <input type="text" >
+      <input type="text" >
+  </section>
+
+--------------------------------------- Hidden Fields -------------------------------------
+
+- We can create a hidden input using <input> element with type="hidden". 
+  Then, we can set the name="" and value="" attributes to identify the certain information that
+    we will be submitting to the server.
+  When we submit the form, the data included in the field (ie. in the value="") will be submitted
+    to the server, so the server can identify what this submission is related to.
+    
+- We should not store sensitive data in hidden fields because they can be inspected when seeing
+    page source code (which is publicly available)
+
+--------------------------------------- Data Validation -------------------------------------
+
+- We can use built-in validation in HTML5 for basic data validation. For more advance validation,
+  we must use JavaScript.
+
+- When we use type="" attribute for the <input> element, it provides some basic validations. For example,
+  for type="email" and type="number" there will be default validation.
+
+- Attributes
+    required            => the field is required for submission
+    minlength=""        => minimum length of text in characters
+    maxlength=""        => maximum length of text in characters  
+    min=""              => for number field - set the minimum acceptable number
+    max=""              => for number field - set the maximum acceptable number
+
+- As best practice, we should use maxlength="" to prevent someone submitting an extremely long characters
+  to the server.
+
+------------------------------------ Submitting the Form -----------------------------------
+
+- We must set two attributes for submitting the form:
+    action=""   => where we are going to send the data. We can put relative or absolute URL.
+                   In most applications, we use service-side technology (back-end) to store the data.
+    method=""   => It can be either POST or GET. Usually, POST is used to send the form to the server.
+
+  To submit a form, each input field inside the <form> element must have a name attribute.
+
+- We can use formspree.io to save our forms. Create an account, then create a new project, then create a new form.
+  Once a new form is created, a link will be provided under 'Your form's endpoint is:' which can be used for 
+  the action="" attribute - see example below.
+  We can see the submited form under the 'Submissions' tab on formspree.io
+
+Example: 
+
+    <form action="https://formspree.io/f/xoqrwydb" method="POST">
+        <input type="text" name="name" placeholder="Name">
+        <input type="email" name="email" placeholder="Email">
+        <button type="submit">Submit</button>
+    </form>
+    
+========================================================================================
+                       Transformations, Transitions, and Animations
+========================================================================================
+        
+----------------------------------- Transformations -------------------------------------
+
+- In CSS, we can use the following functions to transform an element.
+
+- We can also combine the transformation functions eg. transform rotate() translate()
+  The order matters and we get different effects.
+
+transform rotate()
+    - Rotates the element clockwise (positive values) or anti-clockwise (negative values)
+    - Inside () the rotation angle is given with deg unit eg. rotate(15deg)
+
+transform scale()
+    - This makes an element larger or smaller
+    - We give the scale factor (without a unit) inside () eg. scale(1.5)
+
+transform skew()
+    - We can skew to the left or right. 
+    - Positive value skews to left and negative value skews to the right.
+    - Similar to rotate(), we use an angle for skew eg. skew(15deg)
+
+transform translate()
+    - Moves the element horizontally and vertically.
+    - Positive and nagative values can be used. 
+    - Absolute and relative units can be used.
+    - The first value passed to translate() will move it horizontally. The second value
+      will move it vertically. Example: translate(-10px, 30px)
+    - We can use translateX() and translateY() for move along X and Y axes respectively.
+
+----------------------------------- 3D Transformations -------------------------------------
+
+- In order to apply 3D transformations, we need to define a perspective. It essentially
+  defines a virtual space. The perspective value determines the distance between us and
+  the element. The bigger the perspective value, the more effects of the transformation.
+
+- We can either use perspective() function or use perspective property to define the perspective. 
+  Perspective is defined using absolute or relative values eg. perspective(200px)
+
+translateZ()
+    - To move an element on the Z axis (closer or farther to the screen)
+
+rotateX() and rotateY()
+    - When used with perspective, these will rotate the element along the X or Y axis.
+
+transform-origin
+    - This property will change the origin where the transformation is applied to. 
+    - It accepts two values: first for X axis and second for Y axis. 
+    - Values can be relative or absolute.
+          
+          transform-origin 0 0;   => origin is top left corner
+          transform-origin 0 50%  => origin is left (horizontally) and middle (vertically)
+
+- When we have multiple elements in a container, if we define perspective for each element,
+  then a same transformation would have different effect on elements in the same container. 
+
+    .container:hover .box {
+      transform perspective(200px) rotateY(30deg);
+    }
+
+    In the above, when the user hovers the mouse over the .container element, all .box elements
+    inside the container will rotate. Each box will rotate differently, because the perspective
+    is defined for each box individually.
+
+  To resolve this, we can define a perspective for the container, then apply the transformation. 
+  We define it as a property of the container, for example:
+
+         .container {perspective: 200px;}
+         .container:hover .box {
+            transform rotateY(30deg);
+          }
+
+--------------------------------------- Transitions -----------------------------------------
+
+- We can use the trasition property to apply transition to one or more properties.
+
+- Transition property can accept three parameters (second and third are optional):
+    - First parameter is the duration of transition
+    - Second parameter is the timing function (eg. linear, ease-in, ease-out, cubic-bezier, etc)
+    - Third parameter is the delay before the transition starts
+
+          transition: transform 0.5s linear 1s;
+
+- The transition property should be applied to the element not its state. For example,
+  if we want to apply transition to the rotation of the .box class when user hovers a mouse,
+  here is the example implementation:
+
+          .box {transition: transform 0.5s;}
+          .box:hover {transform rotate(30deg);}
+
+- We can add multiple properties to the transition, each with its own parameters. We use comma ','
+  to separate each property.
+    Example:
+            transition: transform 1s, background 1s;
+
+--------------------------------------- Animations -----------------------------------------
+
+- To create an animation, we use @keyframes to define what changes happen at certain points during
+  the animation - see example below
+
+- To implement the animation: we must define the following two properties:
+      animation-name: pop;
+      animation-duration: 4s;
+
+- Other properties include:
+      animation-delay: 1s;
+      animation-iteration-count: infinite;  => 1, 2, ... , infinite
+      animation-timing-function: linear;    => the timing function (linear, ease-in, ease-out, cubic-bezier, etc)
+      animation-direction: normal;          => default is 'normal'. 
+                                               'reverse' makes it to go backwards (100% -> 0%)
+                                               'alternate' makes it alternatve between normal and reverse
+
+- We can use 'animation' shorthand to define all parameters inside a single property.
+  To do this, type ani and then the animation shorthand with all possible parameters appear in the 
+  choice list:
+      animation: name duration timing-function delay iteration-count direction fill-mode;
+
+- Example:
+
+    @keyframes pop {
+    0% {
+      transform: scale(1);
+    }
+
+    25% {
+      transform: scale(1.3);
+    }
+
+    50% {
+      transform: rotate(30deg);
+      background: tomato;
+    }
+
+    100% {
+      transform: rotate(0);
+    }
+  }
+
+  .box {
+    width: 100px;
+    height: 100px;
+    background: gold;
+    animation-name: pop;
+    animation-duration: 4s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+    animation-direction: alternate;
+  }
+
+----------------------------------- Reusable Animations -------------------------------------
+
+- We can create re-usable aninamtions and use them for elements on our website.
+  Essentially, we define a class and implement the animation in CSS. Then use this class in 
+  any element we want to apply the animation to.
+
+- A cool website for animations is www.animate.style
+  We can add their CDN to our HTML header and then use their animations by adding classes 
+  to our elements.
+
+========================================================================================
+                             Writing Clean, Maintainable CSS
+========================================================================================
+        
+---------------------------------- CSS Best Practices ------------------------------------
+
+1- Follow a naming convention
+   Ensure that a same naming convention is always followed. Standard naming conventions include:
+    - kebab-case
+    - camelCase
+    - PascalCase
+    - abc_def
+
+2- Create logical sections
+   - In large projects, we should have multiple stylesheets and then combine them in the build process.
+   - For smaller projects, our stylesheet should be divided into smaller sections.
+   - For example, we could have separate stylesheets or separate sections to style:
+        - Basic styles (eg. html, body, * {box-sizing: border-box;}, etc)
+        - Typography (eg. h1, h2, h3, etc)
+        - Forms
+        - Navigation Bar
+
+3- Avoid over-specific selectors
+   - To avoid over-specific selectors, we should assign class with appropriate pre-fix to our elements.
+     For example, for the following html markup, we assign nav-item to <li> elements. This enables us to
+     style these <li> elements in our stylesheet by using .nav-item selector and avoid complex and
+     over-specific selectors.
+
+        <nav class="nav">
+            <ul class="items">
+                <li class="nav-item">Link 1</li>
+                <li class="nav-item">Link 2</li>
+                <li class="nav-item">Link 3</li>
+            </ul>
+        </nav>
+
+4- Avoid !important
+
+5- Sort CSS properties
+   - It is good practice to sort CSS properties alphabetically. 
+   - To sort, bring up the command palette and type sort. Choose 'Sort Lines Ascending'.
+
+6- Take advantage of style inheritance
+   - Try to apply the styles in the parent elements as much as possible to all child
+     elements can inherit.
+
+7- Extract repetitive patterns 
+   - This is discussed in Object Oriented CSS section below
+
+8- Avoid repetitive values (keep it DRY - Don't Repeat Yourself)
+   - Use CSS variables also called Custom Properties to keep the code DRY
+   - We define CSS variables inside the root pseudo class selector. This selector matches the
+     HTML element. Here we can define custom properties or global variables. 
+     To define a variable, we use double hyphens followed by the name of the variable. Then 
+     refer to the variable in our stylesheet using var().
+
+        :root {
+          --primary-color: #ffdd36;
+          --border-size: 2px;
+          --primary-border: 4px solid #ccc;
+        }
+
+        .box1 {
+          background: var(--primary-color);
+          border: var(--border-size) solid #ccc;
+        }
+
+        .box2 {
+          border: var(--primary-border);
+        }
+
+---------------------------------- Object Oriented CSS ------------------------------------
+
+Object Oriented CSS is based on two main concepts:
+
+1- Separate container from content
+   This means that do not use selectors that tie content to a container. This way, for a 
+   different container, we are not able to use the same style defined in content, and vice-versa.
+   .container .btn {...}   => this is not object oriented CSS
+   .btn {...}    => this is object oriented CSS
+
+2- Separate structure from skin
+   This means that we define the main structure of an element in a general class (e.g. fonts, border, etc).
+   Then, define the skin properties such as background color in a separate class.
+   .btn {...}   => contains more important features that are common in most buttons in our application
+   .btn-primary {background: blue;}  => contains the skin properties such as background color
+   .btn-secondary {background: gold;}  => contains the skin properties
+
+----------------------------------------- BEM -------------------------------------------
+
+- BEM stands for Block Element Modifier. It is a popular naming convention used in HTML/CSS.
+
+- The principle behind it is to think our our website as a collection of blocks or components or modules.
+  These Blocks can contain Elements and can be Modified (BEM). 
+
+- Inside a block there could be elements or other blocks. 
+  For example, we could have a 'card' block which contains two elements each can be a block: header and body.
+  The header block can have other elements such as price element, description, etc. These elements only make
+  sense in the context of the block. In other words, the price with a specific style does not make sense 
+  outside its block (ie. does not have a use case).
+
+- A block can be modified. For example, we could have a standard version of a card block and also have 
+  a 'popular' version of the card block (eg. with different background color).
+
+- BEM naming convention (see example below):
+    - Block name: it can be a custom name. For example: class="card"
+    - Element name: 
+        - If the element is specific to this block (ie. it does not make sense outside the block) then 
+          the BEM convention for the element includes the block name followed by double underscores 
+          and the name of the element. For example: class="card__header" or class="card__price"
+        - If the element itself is an independent block/component (ie. it can also exist outside this 
+          block), then its name should follow the block name. For example: class="btn"
+    - Modifier name: we can add an extra class to the block that is a modified version of the standard
+                     block. The convention for the name of the second class is the block name followed
+                     by double hyphens then by the modfier name. For example: class="card card--popular"
+
+- Example: note that this block is a 'popular' modifier of the standard 'card' block
+
+    <div class="card card--popular">
+        <header class="card__header">
+            <span class="card__price"></span>     => card__price is specific to this block and does not have a use case outside
+        </header>
+        <div class="card__body">
+            <button class="btn"></button>         => btn is used outside this block, so it is named with a block name
+        </div>
+    </div>
+
+========================================================================================
+                                  The Moshify Project
+========================================================================================
+
+----------------------------------------------------------------------------------
+Setting up the project:
+
+1- Install the extensions
+2- Create index.html and use !+tab to create a basic template
+3- Create css/styles.css
+4- Copy normalize.css in the css folder
+5- Add <link> elements in the header section in index.html and add normalize.css and styles.css
+
+----------------------------------------------------------------------------------
+Using Photoshop:
+
+1- The vertical/hotizontal lines are called guides. We can remove them by going to view menu and
+   de-select Extras. Or by pressing cmd+H
+  
+2- Use Eyedropper tool for selecting a color (shortcut: i)
+
+3- We can change the units by going to Preferences>Units&Rulers
+   Here we can change the unit from pt to px.
+
+4- Use Ruler tool for measuring size of elements (it is in the same place as eyedropper tool)
+
+5- Under view>history we can see the history and undo any changes if we wish
+
+----------------------------------------------------------------------------------
+Defining color palette:
+
+- We define these colors in the :root selector in CSS:
+
+  :root {
+    --color-primary: #2584ff;
+    --color-secondary: #00d9ff;
+    --color-accent: #ff3400;     => An accent color is a contrasting color used to draw attention to key pieces of a web page
+    --color-headings: #1b0760;
+    --color-body: #918ca4;
+  }
+
+----------------------------------------------------------------------------------
+
+
+
+
+-->
