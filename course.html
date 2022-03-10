@@ -2233,6 +2233,11 @@ Object Oriented CSS is based on two main concepts:
                      block. The convention for the name of the second class is the block name followed
                      by double hyphens then by the modfier name. For example: class="card card--popular"
 
+- We can use BEM convention (modifier naming) for object oriented CSS. This is useful when we have 
+  a component with several size/color in our design. We could create .badge component, then have 
+  .badge--primary and .badge-secondary to define different color, and have badg--small to represent
+  the small version of the component (see Badge component in the design example below)
+
 - Example: note that this block is a 'popular' modifier of the standard 'card' block
 
     <div class="card card--popular">
@@ -2273,6 +2278,31 @@ Using Photoshop:
 5- Under view>history we can see the history and undo any changes if we wish
 
 ----------------------------------------------------------------------------------
+General Points:
+
+- When a component is created, add a basic HTML of that component in the components folder.
+
+- Use @media for each section of the CSS. Do not have one @media at the end of CSS.
+  This because
+    - It is easier to navigate;
+    - we might have different @media breakpoints for each component. For example, we might
+      change the font size of one component at (min-width: 768px) and another component 
+      at (min-width: 1024).
+
+- Adding Fontawesome icons using pseudo element ::bofore and ::after
+    - See this article on Fontawesome website https://fontawesome.com/v5/docs/web/advanced/css-pseudo-elements 
+    - Example: 
+        .link-arrow::after {
+          content: "\f178";
+          font-family: "Font Awesome 6 Free";
+        }
+
+- Use object oriented CSS combined with BEM convention (modifier naming convention) for creating components which have 
+  varying color/size in our design - See badges
+
+- Use {white-space: nowrap;} whenever we do not want text appearing in multiple rows (eg. badges)
+
+----------------------------------------------------------------------------------
 Defining color palette:
 
 - We define these colors in the :root selector in CSS:
@@ -2286,7 +2316,6 @@ Defining color palette:
   }
 
 ----------------------------------------------------------------------------------
-
 Defining Typography:
 
 - For Google fonts, insert the font links into index.html heading.
@@ -2354,6 +2383,68 @@ Defining Typography:
 
 ----------------------------------------------------------------------------------
 Links:
+
+- Define more general rules for <a> and then more specific rules for each link component
+  using classes.
+
+- Define hover styles using pseudo class selector :hover
+
+- Example: 
+    a {
+      text-decoration: none;
+    }
+
+    .link-arrow {
+      color: var(--color-accent);
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .link-arrow::after {
+      content: "\f178";
+      font-family: "Font Awesome 6 Free";
+      margin-left: 5px;
+      transition: margin 0.2s;
+    }
+
+    .link-arrow:hover::after {
+      margin-left: 10px;
+    }
+
+----------------------------------------------------------------------------------
+Badges:
+
+- Create badges using <span> element.
+
+- Use whitespace: nowrap to ensure than badges are not appearing in multiple lines.
+
+- Example:
+
+    .badge {
+      border-radius: 10rem;
+      font-size: 2rem;
+      font-weight: 600;
+      padding: 0.5rem 2rem;
+      white-space: nowrap;
+    }
+
+    .badge--primary {
+      background: var(--color-primary);
+      color: #fff;
+    }
+
+    .badge--secondary {
+      background: var(--color-primary);
+      color: #fff;
+    }
+
+    .badge--small {
+      font-size: 1.6rem;
+    }
+
+
 
 
 
