@@ -825,6 +825,9 @@ display: flex
   - flex is a subset of block. So, the container will occupy the entire horizontal space.
     In other words, from outside, the container is like a block-level element.
 
+display: inline-flex
+  - The element behaves like an inline element and lays out its content according to the flexbox model.
+
 flex-direction
   - flex-direction property can be set to any of the followings:
       flex-direction: row;
@@ -1367,6 +1370,8 @@ background-attachment
   stylesheet, a bunch of classes have been generated, each correspond to a single image we supplied.
   We need to update the image path and then can copy all these classes into our stylesheet. Then, we need
   to use the <span> element to display every image by assigning the associated class to <span>.
+
+- Another tool to use for svg sprites is: svgsprit.es
 
 - Drawbacks of using css sprites:
   - The combined image file size could get too large, hence difficult to download from the server.
@@ -2227,7 +2232,8 @@ Object Oriented CSS is based on two main concepts:
   a 'popular' version of the card block (eg. with different background color).
 
 - BEM naming convention (see example below):
-    - Block name: it can be a custom name. For example: class="card"
+    - Block name: it can be a custom name. For example: class="card". If there are two words in the name, 
+                  they are separated with a single hyphen eg. class="icon-container"
     - Element name: 
         - If the element is specific to this block (ie. it does not make sense outside the block) then 
           the BEM convention for the element includes the block name followed by double underscores 
@@ -2454,7 +2460,7 @@ Badges:
     }
 
 ----------------------------------------------------------------------------------
-Lists
+Lists:
 
 - We use object oriented CSS here. So, we define a generic list using .list class.
   The, we can define inline list (eg. for navigation bar) using BEM convention. To do this,
@@ -2477,6 +2483,71 @@ Lists
     .list--tick .list__item {padding-left: 0.5rem;}  => note .list__item is the class for <li>
 
 ----------------------------------------------------------------------------------
+Icons:
+
+- When we have several icons to display on our page, it is best practice to use CSS Sprites.
+
+- Since we have several SVG icons, we search for svg sprite generator. In this example, 
+  we use svgsprit.es
+
+- Once the sprite is generated, download the sprite.svg file and move it to the images folder.
+
+- We can then copy the reference (at the bottom of the page, or click on Refs Copied). This 
+  will tell us how to use the sprite for each of the icons.  Essentially, we use <svg> element
+  to insert an svg icon in the html markup. We use <use> element with attribute xlink:href="".
+  Inside href "" we put the path of the sprite file followed by # and then the id of the svg icon
+  eg. xlink:href="images/sprite.svg#wordpress"
+  
+  The id of each of the icons can be tracked inside the sprite.svg file (open it in VS Code).
+  Note that sprite.svg is an XML file (extensible markup language).
+
+  Example of html markup:
+
+      <svg class="icon">
+        <use xlink:href="images/sprite.svg#wordpress"></use>
+      </svg>
+
+- We can style the <svg> element in CSS. We can change size, color, etc.
+  We use 'fill' property to change the color of an svg file eg. fill: #f4f4f4;
+
+- Example:
+
+    .icon {
+      height: 40px;
+      width: 40px;
+    }
+
+    .icon--primary {
+      fill: var(--color-primary);
+    }
+
+    .icon-container {
+      align-items: center;
+      background: #f3f9fa;
+      border-radius: 100%;
+      display: inline-flex;
+      height: 64px;
+      justify-content: center;
+      width: 64px;
+    }
+
+----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
