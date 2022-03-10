@@ -1152,7 +1152,7 @@ One other method we can use to reduce the FAUT issue is the optimise the font fo
   Google to access the fonts (for example, Roboto bold with Open Sans regular). [pairing is no longer available?!!!]
 
   On the top right corner of the page, we can click on the panel to see instructions for using our
-  chosen fonts. Then copy the two link elements and paste them in the Heading of our HTML markup before
+  chosen fonts. Then copy the link elements and paste them in the Heading of our HTML markup before
   the links to the stylesheets. Because the fonts must be downloaded before they are used in the stylesheets.
 
   The first link with rel:"preconnect" is for optimisation and tells the browser that our page is going to 
@@ -1165,6 +1165,11 @@ One other method we can use to reduce the FAUT issue is the optimise the font fo
   As for FOUT, the value for font-display property is provided in the query string parameters. The defaul 
   value is 'swap'. But as we saw above, a better alternative is 'optional'. We can therefore change the
   query string in Google font url and replace 'swap' with 'optional'.
+
+- Generally, we should only import the variations/styles of a Google font that we use in our design (eg. Regular 400,
+  Bold 700, etc). However, we can give ourselves more flexibility on styles for those fonts which are 'variable' fonts, 
+  which means that all different styles are put together in a single font file. So when a request is sent to the 
+  Google server, only a single file is returned. Example of this type of fonts is Inter.
 
 ------------------------------------ System Font Stack --------------------------------------
 
@@ -2291,10 +2296,13 @@ General Points:
 
 - Adding Fontawesome icons using pseudo element ::bofore and ::after
     - See this article on Fontawesome website https://fontawesome.com/v5/docs/web/advanced/css-pseudo-elements 
+    - We must ensure that font-weight is set to bold because only the bold style is included in the FREE version
+      of Fontawesome.
     - Example: 
         .link-arrow::after {
           content: "\f178";
           font-family: "Font Awesome 6 Free";
+          font-weight: bold;
         }
 
 - Use object oriented CSS combined with BEM convention (modifier naming convention) for creating components which have 
@@ -2405,6 +2413,7 @@ Links:
     .link-arrow::after {
       content: "\f178";
       font-family: "Font Awesome 6 Free";
+      font-weight: bold;  /* this is essential for using Free version of Fontawesome */
       margin-left: 5px;
       transition: margin 0.2s;
     }
@@ -2444,10 +2453,30 @@ Badges:
       font-size: 1.6rem;
     }
 
+----------------------------------------------------------------------------------
+Lists
 
+- We use object oriented CSS here. So, we define a generic list using .list class.
+  The, we can define inline list (eg. for navigation bar) using BEM convention. To do this,
+  we give our <li> elements a class of .list__item, then target the <li> element for 
+  .list-inline class as: .list-inline .list__item {display: inline-block;}
 
+- For inline list, we can set the display property of <li> element or its corresponding class to
+  inline or inline-block. The latter enables us to give it padding/margin.
 
+- We can use custom image for bullets. If we do not have some left padding to the list, 
+  the bullets may not be visible. So:
 
+    .list--tick {
+      list-style-image: url(../images/tick.svg);
+      padding-left: 3rem;
+    }
+
+- If we want to add space between list items (ie. <li> element) and the bullet, we can only
+  use margin-left property for the list item:
+    .list--tick .list__item {padding-left: 0.5rem;}  => note .list__item is the class for <li>
+
+----------------------------------------------------------------------------------
 
 
 
