@@ -1638,6 +1638,11 @@ Important notes:
       border: 0;
       outline: 0;
 
+- To change the color of the placeholder (see later for description), we must use
+  the pseudo element selector:
+
+      ::placeholder {color: #cdcbd7}
+
 - It is normal practice to set the cursor to pointer for button in hover status:
         cursor: pointer;
 
@@ -1648,7 +1653,7 @@ Important notes:
 - It's a common technique to set the width of input fields and buttons to 100% so they fill up
   their container. We can then control their size through their container (in this case form-signin)
 
-***** The followin is a sample form and its styling *****
+***** The following is a sample form and its styling *****
 
 ************HTML markup**********
 
@@ -2604,13 +2609,64 @@ Buttons:
     }
 
 ----------------------------------------------------------------------------------
+Inputs:
 
+- We can define a border for our .input element as {border: 1px solid #ccc;}, then customise
+  it later for different designs.
 
+- Always set the outline property to zero {outline: 0;}
 
+- To change the color of the placeholder text, use the pseudo element selector:
 
+      ::placeholder {color: #cdcbd7}
 
+- Example:
 
+    .input {
+      border-radius: 10rem;
+      border: 1px solid #ccc;
+      color: var(--color-headings);
+      font-size: 2rem;
+      outline: 0;
+      padding: 1.5rem 3.5rem;
+    }
 
+    ::placeholder {
+      color: #cdcbd7;
+    }
+
+Input group (with search button inside it)
+
+- The photoshop design shows that the search button is inside the input field. This is not!
+  It is essentially a container with two elements: input field and a button.
+
+- To make this, we define a input-group class with flex display. Then put the input and button
+  elements (with .input and .btn classes respectively) inside it. 
+  Now we can customise what .input and .btn styles when they appear inside .input-group by
+  using nesting ie. .input-group .input {...} and .input-group .btn {...}
+
+- We set flex-grow property of .input-group .input {...} so the input field
+  can grow and take up all the available space. This way, it pushes the button to the end. 
+  If we set flex-grow: 1; then it will always expand to take all available space.
+
+- Example:
+
+    .input-group {
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      display: flex;
+    }
+
+    .input-group .input {
+      border: 0;
+      flex-grow: 1; /* to take up the entire available space in the flex container and push the search button to the end*/
+    }
+
+    .input-group .btn {
+      margin: 5px;
+    }
+
+----------------------------------------------------------------------------------
 
 
 
