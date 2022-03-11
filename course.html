@@ -674,7 +674,7 @@ Best practice for text shadow:
 
 - Padding property is used to add space between the border and content area of the element
 
-------------------------------------- Sizing elements -------------------------------------
+------------------------------------- Sizing Elements -------------------------------------
 
 - By default, the width and height properties are applied to the content box. Any padding and 
   border will be additional to the size of the visible box. The margin property will not impact
@@ -690,6 +690,7 @@ Best practice for text shadow:
     set this property for all elements. In this case, we use universall selector.
   However, universall selector does not apply to pseudo elements. To apply the property
     to all elements and pseudo elements, we use the following:
+
       *, *::before, *::after {box-sizing: border-box}
 
 - Width and height properties apply to block-level elements (eg. <div>), by default. So, if we use these
@@ -2316,6 +2317,15 @@ General Points:
 
 - Use {white-space: nowrap;} whenever we do not want text appearing in multiple rows (eg. badges)
 
+- To address the sizing issues for some elements, it is best practice to set the box-sizing property
+  for all elements at the top of our stylesheet (for details, see section Sizing Elements above):
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
 ----------------------------------------------------------------------------------
 Defining color palette:
 
@@ -2529,6 +2539,68 @@ Icons:
       height: 64px;
       justify-content: center;
       width: 64px;
+    }
+
+----------------------------------------------------------------------------------
+Buttons:
+
+- Again, we use object oriented CSS to separate structure from skin. We define .btn class for
+  structure and then btn--primary, btn--secondary, etc for skin.
+
+- Ensure that we define hover effect for each skin class eg. btn--primary:hover
+  We can use Photoshop to obtain a lighter or darker shade of the button color for hover effect.
+  In practice, if we use SASS or LESS, then we can set the hover effect by using the light function.
+
+  One issue here is whether we should add these hovor colors to our color palette or not. If we do,
+  it would make our color palette busy. But if not, then every time we change our color theme, we
+  have to come to the hover classes and change them. Choose whatever suites our design style!
+
+- If we want the button classes to be applied to <a> element too, test it in the desing.
+  One property we need to set in this case is text-align, since the <a> text alignment is
+  to the left by default. So, we need to add {text-align: center;} to the .btn class.
+
+- We should set {white-space: nowrap;} in the .btn class. This is to ensure text always appears 
+  in a single line.
+
+- Make sure you set {cursor: pointer;}
+
+    .btn {
+      border-radius: 10rem;
+      border: 0;
+      cursor: pointer;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 1rem 0;
+      outline: 0;
+      padding: 2rem 4rem;
+      text-align: center; /* this is for the anchor element */
+      text-transform: uppercase;
+      white-space: nowrap; /* ensure text appears in single line */
+    }
+
+    .btn--primary {
+      background: var(--color-primary);
+      color: #fff;
+    }
+
+    .btn--primary:hover {
+      background: #026ffb;
+    }
+
+    .btn--outline {
+      background: none;
+      border: 2px solid var(--color-headings);
+      color: var(--color-headings);
+    }
+
+    .btn--outline:hover {
+      background: var(--color-headings);
+      color: #fff;
+    }
+
+    .btn--block {
+      display: inline-block;
+      width: 100%;
     }
 
 ----------------------------------------------------------------------------------
