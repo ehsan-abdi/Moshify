@@ -1389,13 +1389,19 @@ background-attachment
 
 - So, this method is not recommended.
 
-------------------------------------------- Clipping --------------------------------------------
+------------------------------------ Clipping (& Masking) ---------------------------------------
 
 - We can clip our image using clipping methods in CSS. Essentially this is to crop an image to a certain shape.
 - Search for css clip generator or visit bennettfeely.com/clippy
 - These websites generate a clip-path property which we can use in our CSS to clip images.
 
 ------------------------------------------- Filters ---------------------------------------------
+
+- Opacity
+  The opacity property specifies the opacity/transparency of an element. It can be used for images and text.
+      img {
+        opacity: 0.5;
+      }
 
 - To see the full list of available filters, search for css filter functions and visit the page
   provide by developer.mozilla.com 
@@ -2331,6 +2337,11 @@ General Points:
         box-sizing: border-box;
       }
 
+- Try not to use flexbox if not necessary. If we put <div> elements inside a component, 
+  they will appear vertically as a block. If we put <span> elements inside a component, 
+  they will appear horizontally as inline. So we can use these two elements to create 
+  a structure for our component without using flex. As example, see 'Plans' design below.
+
 ----------------------------------------------------------------------------------
 Defining color palette:
 
@@ -2667,10 +2678,84 @@ Input group (with search button inside it)
     }
 
 ----------------------------------------------------------------------------------
+Cards:
 
+- To make the website responsive, we better not give width to the component we are building and
+  let its container decide its width. 
 
+- If we want to give a skin (eg. background color, text color, etc) to our component, which the skin
+  is applied to an element/block inside the component, then we can use nesting. For example, if we want
+  the card header to have a specific skin when card--primary class is applied to the card component, then:
+        .card--primary .card__header {...}
 
+- When we apply border-radius to our container, it may not be visible in some designs. This is because the 
+  internal elements of the container overflow and hide the round corners. For this, we should set the 
+  overflow property of the container to hidden:
+        .card {overflow: hidden;}
 
+- This is how to create the card component with its skins:
+
+.card {
+  border-radius: 1rem;
+  box-shadow: 0 0 20px 10px #f3f3f3;
+  overflow: hidden;
+}
+
+.card__header,
+.card__body {
+  padding: 2rem 3rem;
+}
+
+.card--primary .card__header {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.card--secondary .card__header {
+  background: var(--color-secondary);
+  color: #fff;
+}
+
+----------------------------------------------------------------------------------
+Plans:
+
+- The plan is a special card design. So we wrap the card component inside the plan 
+  component:
+    <div class="plan">
+      <div class="card">
+        .......
+      </div>
+    </div>
+
+- We use <h3> for the plan name. This is because it appears below <h2> in the design.
+
+- Example: 
+
+    .plan__name {
+      color: #fff;
+      font-size: 2.4rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .plan__price {
+      font-size: 6rem;
+    }
+
+    .plan__billing-cycle {
+      font-size: 2.4rem;
+      font-weight: 200;
+      margin-right: 1rem;
+      opacity: 80%;
+    }
+
+    .plan__description {
+      font-size: 2rem;
+      font-weight: 200;
+      text-transform: capitalize;
+    }
+
+----------------------------------------------------------------------------------
 
 
 
