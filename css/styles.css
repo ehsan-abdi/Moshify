@@ -394,3 +394,22 @@ a {
   width: 35px;
   writing-mode: vertical-lr;
 }
+
+/* Media Objects */
+
+.media {
+  display: flex;
+}
+
+.media__body {
+  margin: 0 2rem;
+}
+
+.media__title {
+  margin-top: 0;
+  text-transform: capitalize;
+}
+
+.media__image {
+  margin-top: 1rem;
+}
