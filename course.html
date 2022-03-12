@@ -2756,11 +2756,63 @@ Plans:
     }
 
 ----------------------------------------------------------------------------------
+Popular Badge (inserted on the popular price plan):
 
+- Mosh did this using an svg image, then relatively position it to the header of
+  the card element.
 
+- We define a plan--popular class and for this, we dynamically add the popular badge
+  in the DOM using the pseudo element ::before. 
 
+- To position the badge relative to the card header, we must set the position property
+  of card__header to 'relative' and the position property of the badge to 'absolute'.
 
+- Mosh's implrementation:
 
+    .plan--popular .card__header {
+      position: relative;
+    }
+
+    .plan--popular .card__header::before {
+      content: url(../images/sprite.svg);
+      width: 40px;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 5%;
+    }
+
+- I implemented the badge using clipping method. Otherwise, I used the same method to
+  place the badge on top of the card__header element.
+
+  There is a small problem in both implementations (Mosh's and mine) that when the badge
+  is moved to offset the header from the top (as shown in the Photoshop design) it gets
+  cut off and its offset above the card header is not visible. This is because we have
+  set the overflow property of the card component to hidden. So when the badge is offset
+  from the top of the card header, its offset is not visible. 
+
+  My implementation of the popular badge:
+
+    .plan--popular .card__header::before {
+      content: "Popular";
+      align-items: center;
+      background: var(--color-headings);
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 90%, 0% 100%);
+      color: #fff;
+      display: flex;
+      font-size: 1.8rem;
+      font-weight: 600;
+      height: 100px;
+      justify-content: center;
+      padding-bottom: 10px;
+      position: absolute;
+      right: 10%;
+      top: 0px;
+      width: 35px;
+      writing-mode: vertical-lr;
+    }  
+
+----------------------------------------------------------------------------------
 
 
 

@@ -369,3 +369,28 @@ a {
     font-size: 1.7rem;
   }
 }
+
+/* Popular Badge */
+
+.plan--popular .card__header {
+  position: relative;
+}
+
+.plan--popular .card__header::before {
+  content: "Popular";
+  align-items: center;
+  background: var(--color-headings);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 90%, 0% 100%);
+  color: #fff;
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 600;
+  height: 100px;
+  justify-content: center;
+  padding-bottom: 10px;
+  position: absolute;
+  right: 10%;
+  top: 0px;
+  width: 35px;
+  writing-mode: vertical-lr;
+}
