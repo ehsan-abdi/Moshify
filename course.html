@@ -2838,6 +2838,22 @@ Media Object:
     }
 
 ----------------------------------------------------------------------------------
+Quotes:
+
+- We wrap quotes inside <blockquote> element.
+
+- In order to add quotation marks to both sides of the quoted text, we use ::before
+  and ::after and set the content to 'open-quote' and 'close-quote' respectively.
+
+- We can add <footer> to our quote component and inside this we use the media component
+  to display the name of the person.
+
+- To style the media component to match our quote design, we can either use nested
+  selectors (eg. .quote .media__title {...}) or define a new classes (eg. quote__author,
+  quote__company). The latter approach is recommended. Because, if in future, we want 
+  to re-implement the author section without using the media component, we do not have 
+  to re-style the elements. We can simply remove the media classes.
+
 
 
 
