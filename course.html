@@ -214,7 +214,7 @@ Free Images and Videos
 
 - Size
     One useful way to style the size of the image is to define the box that will contain the
-    the image and then use object-fit to fir the image into the box. 
+    the image and then use object-fit to fit the image into the box. 
             width: 200px;
             height: 200px;
             object-fit: cover;
@@ -223,6 +223,10 @@ Free Images and Videos
     
     We can always play with different values of a style inside the styles section of the developer
     tool in the browser. 
+
+    ***** To ensure that an image will take 100% of the size of its container, we set its
+    width: 100%. Note that this style MUST be applied to the <img> element itself and NOT
+    its container.
 
 ----------------------------------- Video and Audio -------------------------------
 
@@ -2893,18 +2897,31 @@ Grids:
       }
 
       @media screen and (min-width: 768px) {
-        .grid {
+        .grid--1x2 {
           grid-template-columns: repeat(2, 1fr);
         }
       }
 
       @media screen and (min-width: 1024px) {
-        .grid {
+        .grid--1x3 {
           grid-template-columns: repeat(3, 1fr);
         }
       }
 
 ----------------------------------------------------------------------------------
+Testimonials:
+
+- To ensure that an image will take 100% of the size of its container, we set its
+  width: 100%. Note that this style MUST be applied to the <img> element itself and NOT
+  its container.
+
+- We use one column grid for mobile and two column grid for tablet and desktop.
+
+----------------------------------------------------------------------------------
+
+
+
+
 
 
 
