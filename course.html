@@ -903,10 +903,10 @@ Sizing items:
 Grid is used to lay out items in both directions (row and column). For example it can be used
   for the layout of our website.
 
-In the DevTool, we can click on 'grid' shown on the container (Elements tab) to see the grid.
+In the DevTool, we can click on 'grid' badge shown on the container (Elements tab) to see the grid.
   We can then use Layout tab to set overlay display settings.
 
-- To define a grid:
+- To define a grid, we set the following properties (see example below):
   - display: grid
   - grid-template-rows
   - grid-template-columns
@@ -934,10 +934,13 @@ In the DevTool, we can click on 'grid' shown on the container (Elements tab) to 
         grid-template: repeat(3, 100px) / 100px 30fr 70fr;
           (fr means fraction of available empty space. 30fr means 30% of the available free space)
           (as best practice, we should avoid % and use fr when sizing the grid rows and columns)
+          (when we use fr, the value of it is relative. So 1fr 1fr is equivalent to 50fr 50fr)
 
       Method 6:
         grid-template: 100px auto 100px / 30fr 70fr;
           (here auto means that the middle row will take up the entire available space)
+          This is useful for having a responsive design. For example, if we want our header and footer 
+          to have a certain height and the remaining vailable height be given to the body.
 
       Method 7: 
         We do not have to specify the number of rows if we are displaying a certain number of
@@ -945,15 +948,15 @@ In the DevTool, we can click on 'grid' shown on the container (Elements tab) to 
         added automatically as photos are added to the grid (see Exercise PhotoGallery).
 
 - Alignment
-  - Alignment of the grid inside its container
+  - Alignment of the entire grid block (inside its container)
     - justify-content (along the horizontal axix)
-    -align-content    (along the vertical axis)
+    - align-content    (along the vertical axis)
 
   - Alignment of items inside grid cells
     - justify-items (along the horizontal axix)
     - align-items   (along the vertical axis)
 
-  - To align, we set the above properties to:
+  - To align, we can set the above properties to:
       start
       end
       center
@@ -972,12 +975,12 @@ In the DevTool, we can click on 'grid' shown on the container (Elements tab) to 
 - Placing items
   - By default, items are placed from top left to bottom right in the grid.
   - By default, each item will take one cell.
-  - To specify the location of items in the grid, we use these properties for individual items:
+  - To specify the location of items in the grid, we use these properties for each individual item:
       grid-row
       grid-column
       grid-area (shorthand for grid-row and grid-column)
   
-  - If only one argument is assigned, that will be the column number that we want the item to be placed in. 
+  - If only one argument is assigned to grid-area, that will be the column number that we want the item to be placed in. 
   - If the item is taking more than one cell, we can provide the line numbers for the starting and ending cell:
             grid-column: 1 / 3;  (items starts from line one and ends at line 3)
     We can also use span to specify how many cells the item spreads over:
@@ -989,9 +992,12 @@ In the DevTool, we can click on 'grid' shown on the container (Elements tab) to 
   
 - Placing items in named areas
   - We need these two properties:
+
         grid-template-areas  (used for the container to define different areas)
         grid-area  (used for individual items)
+
   - Example:
+
         grid-template-areas:
           "header  header"
           "sidebar main"
@@ -1001,6 +1007,7 @@ In the DevTool, we can click on 'grid' shown on the container (Elements tab) to 
     contain any content, we us . for its name.
 
   - Now, we can use grid-area to assign an item to a named area (note we do not use "" in the area name here)
+
         grid-area: header; (this will place the item in the cells named header)
 
 -------------------------------------- Hiding Elements --------------------------------------
@@ -2853,6 +2860,53 @@ Quotes:
   quote__company). The latter approach is recommended. Because, if in future, we want 
   to re-implement the author section without using the media component, we do not have 
   to re-style the elements. We can simply remove the media classes.
+
+----------------------------------------------------------------------------------
+Grids:
+
+- We define a <div> element with .grid class. We set its 'display' property to grid.
+  This creates a grid layout with one column. Of course, the number of rows is not 
+  needed to be set as rows will be automatically added when new elements are inserted.
+
+- Assuming Mobile First approach and assuming our mobile layout has only one column,
+  then the above will do the job for mobile. Now, we need to define grids for tablet and
+  desktop layouts. Assuming our grid will have two columns in tablet screen and three
+  columns in desktop screen, the use @media query to define their respective grids.
+  See the example below.
+
+- For giving class name, we can use either .grid--1x2 or .grid--cols-2 for the two-column
+  grid. The first one implies that our grid has one row, but of course we know that this is
+  arbitrary.
+
+- Example:
+
+  HTML markup:
+
+      <div class="grid grid--1x2 grid--1x3">
+
+      </div>
+
+  CSS:
+
+      .grid {
+        display: grid;
+      }
+
+      @media screen and (min-width: 768px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media screen and (min-width: 1024px) {
+        .grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+----------------------------------------------------------------------------------
+
+
 
 
 
