@@ -943,8 +943,14 @@ In the DevTool, we can click on 'grid' badge shown on the container (Elements ta
       Method 6:
         grid-template: 100px auto 100px / 30fr 70fr;
           (here auto means that the middle row will take up the entire available space)
+
           This is useful for having a responsive design. For example, if we want our header and footer 
           to have a certain height and the remaining vailable height be given to the body.
+
+          If we have two columns and want the first column to be wide enought to accommodate its 
+          content, but the second column taking all the remaining available space, we can use:
+            
+             grid-template-columns: 1rf auto;
 
       Method 7: 
         We do not have to specify the number of rows if we are displaying a certain number of
@@ -969,6 +975,9 @@ In the DevTool, we can click on 'grid' badge shown on the container (Elements ta
   - If justify-items and align-items are set to stretch (which is the default value), 
     in the absence of specified width/height properties, the item will stretch to fill in 
     the entire grid cell along the x/y axis.
+
+    ****** So, if we do not set these two properties, and if we have an image or a button inside the 
+    grid cell, they will stretch to fill the grid cell and will get a wierd shape.
   
 - Gap
   - To apply gap between rows and columns, we use these properties for the container:
@@ -2918,8 +2927,62 @@ Testimonials:
 - We use one column grid for mobile and two column grid for tablet and desktop.
 
 ----------------------------------------------------------------------------------
+Callouts:
 
+- Callouts are the section of the website where the user is expected to take an action.
 
+- We implement the callout section in one column on mobile screen and two columns on 
+  tablet and desctop.
+
+- We implement the action button as an anchor instead of a button. 
+
+- To avoid the button to stretch to take the entire grid cell, we must define two aligning
+  properties justify-self and align-self. These properties are set to 'stretch' by default, 
+  so the element will stretch to take the entire available width and height (if these 
+  properties are not fixed for the component).
+
+Example: 
+
+    .callout {
+      border-radius: 10px;
+      padding: 4rem 3rem;
+    }
+
+    .callout__content {
+      text-align: center;
+    }
+
+    .callout--primary {
+      background: var(--color-primary);
+      color: #fff;
+    }
+
+    .callout .btn {
+      justify-self: center;
+      align-self: center;
+    }
+
+    .callout__heading {
+      color: #fff;
+      margin-top: 0;
+      text-transform: capitalize;
+    }
+
+    @media screen and (min-width: 768px) {
+      .callout__content {
+        text-align: left;
+      }
+
+      .callout .grid--1x2 {
+        grid-template-columns: 1fr auto;
+      }
+
+      .callout .btn {
+        margin-left: 2rem;
+      }
+    }
+
+----------------------------------------------------------------------------------
 
 
 
