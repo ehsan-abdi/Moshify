@@ -2075,12 +2075,17 @@ transform-origin
 
 - We can use the trasition property to apply transition to one or more properties.
 
-- Transition property can accept three parameters (second and third are optional):
-    - First parameter is the duration of transition
-    - Second parameter is the timing function (eg. linear, ease-in, ease-out, cubic-bezier, etc)
-    - Third parameter is the delay before the transition starts
+- Transition property can accept for parameters (third and fourth are optional):
+    - First parameter is the name of the property to which the transition is applied.
+    - Second parameter is the duration of transition
+    - Third parameter is the timing function (eg. linear, ease-in, ease-out, cubic-bezier, etc)
+    - Fourth parameter is the delay before the transition starts
 
           transition: transform 0.5s linear 1s;
+
+- We can use 'all' for the first parameter to apply the transition to all properties.
+
+          transition: all 0.5s;
 
 - The transition property should be applied to the element not its state. For example,
   if we want to apply transition to the rotation of the .box class when user hovers a mouse,
@@ -2983,7 +2988,95 @@ Example:
     }
 
 ----------------------------------------------------------------------------------
+Collapsibles:
 
+- Our collapsible has a header and a body. In the header, we have the heading and the chevron icon.
+
+- Collapsible header:
+    - We use flex to put the heading and chevron in a horizontal row.
+    - We use {justify-content: space-between;} to place the two elements (i.e. heading and chevron) on 
+      the two ends of the flexbox.
+
+- We assume that the collapsible is in collapse state initially. So we add the class .collapsible--expanded
+  to specify the properties in the expanded state.
+
+- To toggle between expanded and collapse states on mouse click, we must use JavaScript. The code is provided
+  by Mosh. It simply targets all elements with .collapsible class and add/remove the class name collapsible--expanded
+  on each mouse click. The JavaScript implementation is:
+
+      const collapsibles = document.querySelectorAll(".collapsible");
+      collapsibles.forEach((item) =>
+        item.addEventListener("click", function () {
+          this.classList.toggle("collapsible--expanded");
+        })
+      );
+
+- In order to show/hide the collapsible content, one solution is to use the display property. However,
+  it is not possible to animate the display property (ie. the transition property does not work with display property)
+
+  One solution is to set {max-height: 0;} and {overflow: hidden;} for .collapsible__content for the collapse state and 
+  set {max-height: 100vh;} for the expanded state. The reason we use max-height instead of height property is that
+  max-height sets the maximum height, but the element's height will be determined by its content. The reason we use
+  {overflow: hidden;} is that when we set {max-height: 0;} if the overflow property is not set to hidden, the 
+  content is still visible.
+
+  We can also set {opacity: 0;} for the collapse state and then set it to {opacity: 1;} to give nicer 
+  transition effect.
+
+- We use {transform: rotate(-90deg);} to rotate the chevron 90 degrees when the collapsible
+  collapses/expanded.
+
+- Example:
+
+  HTML:
+      <div class="collapsible collapsible--expanded">
+          <header class="collapsible__header">
+              <h2 class="collapsible__heading">
+                  Products
+              </h2>
+                  <svg class="icon collapsible__chevron">
+                      <use xlink:href="images/sprite.svg#chevron"></use>
+                  </svg>
+          </header>
+          <div class="collapsible__content">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta, dolorum!
+          </div>
+      </div>
+
+  CSS:
+      .collapsible__header {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+
+      .collapsible__heading {
+        margin-top: 0;
+        font-size: 3rem;
+      }
+
+      .collapsible__chevron {
+        transform: rotate(-90deg);
+        transition: transform 0.3s;
+      }
+
+      .collapsible__content {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.3s;
+      }
+
+      .collapsible--expanded .collapsible__content {
+        max-height: 100vh;
+        opacity: 1;
+      }
+
+      .collapsible--expanded .collapsible__chevron {
+        transform: rotate(0);
+      }
+    
+----------------------------------------------------------------------------------
 
 
 
