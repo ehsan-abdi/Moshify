@@ -3077,10 +3077,96 @@ Collapsibles:
       }
     
 ----------------------------------------------------------------------------------
+Blocks:
 
+- To skew a block (make a polygon), we can use the clip-path property. See the example below.
 
+- If a variable is specific to a particular class, and other variations/skins of that class
+  are dependent to that variable, we can define a CSS variable inside the main class and then
+  base the properties of the skin classes to this variable. For this we can use the cals()
+  function. For example:
 
+  .block {
+    --padding-vertical: 6rem;
+    padding: var(--padding-vertical) 2rem;
+  }
 
+  .block--skewed-right {
+    padding-bottom: calc(var(--padding-vertical) + 4rem);
+  }
+
+- If we set the margin property to auto (for top/bottom value and/or left/right value), then
+  the available space will be equally distributed around the element.
+
+  For example: 
+
+    .container {
+      max-width: 1024px;
+      margin: 0 auto;       => there will be 0 margin for top and bottom. the horizontal space will be 
+                               equally distributed between left and right margins. 
+    }
+
+- We often do not want the content to be stretch horizontally beyond a certain width. In other words,
+  in a really wide screen, we do not want the content of our website to be stretched to take up the 
+  full width. So we can define a .container class to restrict the max-width. This class can be 
+  applied to any component and is not specific to the block component.
+
+- Example:
+
+  HTML
+
+    <section class="block block--dark block--skewed-right">
+        <div class="container">
+            <header class="block__header">
+                <h2 class="block__heading">
+                    Heading
+                </h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dolor!
+                </p>
+            </header>
+          </div>
+        </section>
+
+  CSS
+
+    .block {
+      --vertical-padding: 6rem;
+      padding: var(--vertical-padding) 2rem;
+    }
+
+    .block__header {
+      text-align: center;
+    }
+
+    .block__heading {
+      margin-top: 0;
+    }
+
+    .block--dark {
+      background: #000;
+      color: #7b858b;
+    }
+
+    .block--dark .block__heading {
+      color: #fff;
+    }
+
+    .block--skewed-right {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 80%);
+      padding-bottom: calc(var(--vertical-padding) + 4rem);
+    }
+
+    .block--skewed-left {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 0% 100%);
+      padding-bottom: calc(var(--vertical-padding) + 4rem);
+    }
+
+    .container {
+      max-width: 800px; /* this is based on the Photoshop design (desktop screen) 1140px */
+      margin: 0 auto; /* to ensure horizontal space is distributed equally between left and right margins */
+    }
+----------------------------------------------------------------------------------
 
 
 
