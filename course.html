@@ -455,6 +455,7 @@ Essentially, normalize.css normalizez the styles so that so we start from a comm
         a[][] {}               (combining two attribute conditions)
 
 - Using selectors:
+    .first.second       (selecting an element with both .first and .second classes ie. class="first second")
     .first {}           (all elements with class="first")
     section.first {}    (<section> with class="first")
     section .first {}   (elements with class="first" that are inside <section>)
@@ -3042,6 +3043,7 @@ Collapsibles:
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta, dolorum!
           </div>
       </div>
+      <script src="/js/main.js"></script>
 
   CSS:
       .collapsible__header {
@@ -3167,6 +3169,155 @@ Blocks:
       margin: 0 auto; /* to ensure horizontal space is distributed equally between left and right margins */
     }
 ----------------------------------------------------------------------------------
+Navigation Bar:
+
+- The navigation bar is different for mobile and desktop. In mobile, the menu is essentially collapsible. 
+  So, there is a menu icon and once the use clicks on it, the menu will appear. 
+
+  The navigation bar has three elements: logo, menu icon (only appears on mobile), and navigation list.
+  We use un-ordered list for navigation list.
+  
+  To implement the navigation bar, we use <nav> element and give it a class of .nav. In CSS, we set 
+  the display of .nav to flex. Now, by default, flex shows all its content in a single row (ie. shrinks
+  all elements to shown on a single row). We can change this by setting {flex-wrap: wrap;}. This enables
+  the elements inside flex to take their given width. Now, in order to show the navigation list on the 
+  second line for mobile screens, we set its {width: 100%;}. This moves the navigation list to the second
+  line. In orde to show the logo and menu icon on the two ends of the navigation bar, we set 
+  {justify-content: space-between;}. 
+
+- We should wrap the logo inside an anchor so that when use clicks on it, it goes to the homepage.
+  For this, we use href="/" which refers to the route of the website.
+
+- To implement the navigation list, we use an un-ordered list. We use the anchor element inside each <li> for
+  individual menu items. This way, the color of navigation list is set by the a:link and a:visited color. So,
+  we need to set these properties to our desired color. Example:
+
+      .nav__item > a:link,
+      .nav__item > a:visited {
+        color: #d2d0db;
+        transition: color 0.3s;
+      }
+
+      .nav__item > a:hover {
+        color: #fff;
+      }
+
+- We can use the .collapsible class for the <nav> element to make it collapsible for mobile
+  screens. We also need to add .collapsible__content to the navigation list. Noting that we 
+  are using JavaScript to add .collapsible--expanded class to the .collapsible element when
+  there is a mouse click, our collapsible implementation is complete. Of course, we can define
+  the skin of the menu bar (opacity, color, etc) for both states (expanded and collapsed).
+
+- One problem that I have with the above implmenetation (ie. Mosh's implementation), is the if the 
+  user clicks anywhere on the navigation bar, the menu will be expanded/collapsed. A better 
+  implementation would be to restrict it to clicking on the navigation menu icon.
+
+- To implement the navigation bar for mobile screen, we must use the media query and set the followings:
+  - Hide the navigation menu icon ie. {display: none;}
+  - Set the width of the navigation list to auto {width: auto;}, so it appears on a single line as the logo.
+  - Set the display of the navigation list to flex, so list items appear horizontally.
+  - Due to the collapsible implementation for mobile (Mosh's implementation that clicking anywhere on the
+    navigation bar will expand/collapse the navigation menu), we should set the max-height and opacity of 
+    the navigation menu to 100% and 1 respectively, so they are always in the expanded status 
+    {max-height: 100%; opacity:1;}
+
+- To apply a styling to an element with two classes, we use .firstClass.secondClass
+  The above will target any element with class="firstClass secondClass".
+  We use this for components that appear in several locations on the page. To ensure that applying a style
+  on one component will not change another component with the same class on the page, we add a second class
+  for saftey. In the example below, see styling for .nav.collapsible--expanded .nav__toggler {}
+
+- In the example, the logo is not vertically in the centre. So we use transform: translateY(5px) to shift
+  the logo down. 
+
+- Example: 
+
+    HTML:
+
+        <nav class="nav collapsible">
+            <a class="nav__brand" href="/">
+                <img src="images/logo.svg" alt="The website logo">
+            </a>
+            <svg class="icon icon--white nav__toggler">
+                <use xlink:href="images/sprite.svg#menu"></use>
+            </svg>
+            <ul class="list nav__list collapsible__content">
+                <li class="nav__item"><a href="#">Hosting</a></li>
+                <li class="nav__item"><a href="#">VPS</a></li>
+                <li class="nav__item"><a href="#">Domain</a></li>
+                <li class="nav__item"><a href="#">Pricing</a></li>
+            </ul>
+        </nav>
+        <script src="/js/main.js"></script>
+
+    CSS:
+
+        .nav {
+          background: #000;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          padding: 0 1rem;
+          align-items: center;
+        }
+
+        .nav__list {
+          width: 100%;
+          margin: 0;
+        }
+
+        .nav__item {
+          padding: 0.5rem 2rem;
+          border-bottom: 1px solid #222;
+        }
+
+        .nav__item > a:link,
+        .nav__item > a:visited {
+          color: #d2d0db;
+          transition: color 0.3s;
+        }
+
+        .nav__item > a:hover {
+          color: #fff;
+        }
+
+        .nav__toggler {
+          opacity: 0.5;
+          transition: all 0.2s;
+          cursor: pointer;
+        }
+
+        .nav.collapsible--expanded .nav__toggler {
+          opacity: 1;
+          box-shadow: 0 0 0 3px #666;
+          border-radius: 3px;
+        }
+
+        .nav__brand {
+          transform: translateY(5px);
+        }
+
+        @media screen and (min-width: 768px) {
+          .nav__toggler {
+            display: none;
+          }
+
+          .nav__list {
+            width: auto;
+            display: flex;
+            font-size: 1.6rem;
+            max-height: 100%;
+            opacity: 1;
+          }
+
+          .nav__item {
+            border: 0;
+          }
+        }
+
+----------------------------------------------------------------------------------
+
+
 
 
 
