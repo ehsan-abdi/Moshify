@@ -33,6 +33,7 @@ h2,
 h3 {
   color: var(--color-headings);
   margin-bottom: 2rem;
+  line-height: 1.1;
 }
 
 h1 {
@@ -623,7 +624,7 @@ a {
 }
 
 .container {
-  max-width: 800px; /* this is based on the Photoshop design (desktop screen) 1140px */
+  max-width: 1140px; /* this is based on the Photoshop design (desktop screen) */
   margin: 0 auto; /* to ensure horizontal space is distributed equally between left and right margins */
 }
 
@@ -689,5 +690,36 @@ a {
 
   .nav__item {
     border: 0;
+  }
+}
+
+/* Heros */
+
+.hero {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%);
+}
+
+.hero__image {
+  width: 100%;
+}
+
+.hero__tagline {
+  font-size: 2rem;
+  color: #b9c3cf;
+  letter-spacing: 1px;
+}
+
+.hero__content .btn {
+  display: inline-block;
+}
+
+@media screen and (min-width: 768px) {
+  .hero {
+    padding-top: 0;
+  }
+
+  .hero__content {
+    text-align: left;
+    align-self: center;
   }
 }
