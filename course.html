@@ -1518,7 +1518,7 @@ background-attachment
 
 - Solution:
   The solution is to provide different versions of the image for different screen sizes. It is not
-  practical to provide a version for each screen size available in the market, but we can instead
+  practical to provide a version for every screen size available in the market, but we can instead
   provide perhaps three versions of the image small, medium and large. 
 
   We can tell the browser the actual pixel size of our images and let the browser pick up the best
@@ -1572,13 +1572,16 @@ background-attachment
 
 - To convert JPG to WebP, go to cloudconvert.com
 
+- We only need to assign the class="" to the <img> element inside <picture>. This class will be applied to 
+  any image used as the source.
+
 - To ensure that IE users are also able to see the image, we should use <picture> element:
   (note that we can use srcset attribute to supply different sizes if we wish to do so)
 
     <picture>
         <source type="image/webp" srcset="images/meal.webp">    => if the browser supports WebP, the first option will be rendered.
         <source type="image/jpeg" srcset="images/meal.jpg">     => if the browser does not support WebP, this will be rendered
-        <img src="images/meal.jpg" alt="...">                   => this shows the alt="" and useful if the browser does not support <picture> or <source> elements
+        <img class="abcd" src="images/meal.jpg" alt="...">                   => this shows the alt="" and useful if the browser does not support <picture> or <source> elements
     </picture>
 
 -------------------------------------------- Art Direction -------------------------------------------
@@ -3324,6 +3327,34 @@ Heros:
   by more specific classes. Example: <header class="block__header hero__content">
 
 - The hero component is mostly made up of other components we have already build so far.
+
+Image Optimisation:
+
+- We can create different versions of the hero image to optimise for different browsers/screens.
+  Since the maximum width of the content is set to 1140px, and the hero image occupies half of this
+  width, we need 570px for DDR=1 screens, and 1140px for DDR=2 screens. We could potentially have 
+  1710px for DDR=3, but our source image is only 1500px wide, so it is not possible to make a 3x version.
+
+  To further optimise the image, we can serve .webp versions of the image as well. So if the browser
+  supports .webp types, then it this type will be rendered. 
+  
+  Note that, for serving different types (eg. .webp, .png, etc), we use <picture> element. Inside this,
+  we insert different sources using <source> element from top to bottom, starting from smaller versions to 
+  larger versions. Finally, we put the <img> element, in case a browser does not support <picture> and <source>.
+  The question is where to put the class="" for this component. It must be inserted inside the <img>
+  element. 
+
+- Example implementation (note where class="" is inserted)
+
+      <picture>
+          <source type="image/webp" srcset="
+              images/banner.webp    1x,
+              images/banner@2x.webp 2x">
+          <source type="image/png" srcset="
+              images/banner.png    1x,
+              images/banner@2x.png 2x">
+          <img class="hero__image" src="images/banner.png" alt="">
+      </picture>
 
 ----------------------------------------------------------------------------------
 
