@@ -960,6 +960,18 @@ In the DevTool, we can click on 'grid' badge shown on the container (Elements ta
         elements (eg. photos). We can only specify the number of colums and then new rows will be 
         added automatically as photos are added to the grid (see Exercise PhotoGallery).
 
+      Method 8:
+        grid-template-columns: repeat(auto-fit, 100px); => this will create columns each 100px wide
+                                                           to accommodate all elements inside the container.
+                                                           If not enough horizontal space is available,
+                                                           a new row will be created.
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); => this will create columns to accommodate all
+                                                                        elements inside the container. The columns
+                                                                        will be stretched equally to fill up all the
+                                                                        available horizontal space, but will have a
+                                                                        minimum width of 100px. If not enough horizontal
+                                                                        space is available, a new row will be created.
+
 - Alignment
   - Alignment of the entire grid block (inside its container)
     - justify-content (along the horizontal axix)
@@ -3332,8 +3344,8 @@ Image Optimisation:
 
 - We can create different versions of the hero image to optimise for different browsers/screens.
   Since the maximum width of the content is set to 1140px, and the hero image occupies half of this
-  width, we need 570px for DDR=1 screens, and 1140px for DDR=2 screens. We could potentially have 
-  1710px for DDR=3, but our source image is only 1500px wide, so it is not possible to make a 3x version.
+  width, we need 570px for DPR=1 screens, and 1140px for DPR=2 screens. We could potentially have 
+  1710px for DPR=3, but our source image is only 1500px wide, so it is not possible to make a 3x version.
 
   To further optimise the image, we can serve .webp versions of the image as well. So if the browser
   supports .webp types, then it this type will be rendered. 
@@ -3343,6 +3355,9 @@ Image Optimisation:
   larger versions. Finally, we put the <img> element, in case a browser does not support <picture> and <source>.
   The question is where to put the class="" for this component. It must be inserted inside the <img>
   element. 
+
+- To check which image the browser retrieves for different DPRs, we can use FireFox's dev tool. There, we can
+  specify the DPR. 
 
 - Example implementation (note where class="" is inserted)
 
@@ -3357,7 +3372,35 @@ Image Optimisation:
       </picture>
 
 ----------------------------------------------------------------------------------
+Domain Block:
 
+- Use {vertical-align: middle;} for aligning an inline element vertically in the middle.
+
+- We use grid to display the list of prices. We set {display: grid;} for the <ul> element.
+
+- We do not have to set the number of rows, as rows will be automatically created when needed.
+  However, if we do not set grid-template-rows property, then rows will be very close to each other.
+  So we can define the number of rows as:
+
+      grid-template-rows: repeat(2, 6rem);
+
+- In the desktop/tablet version, we arrange the un-ordered list horizontally to fill up 700px
+  width of the screen. We can use the following to create columns to accommodate all the <li> elements. 
+  Columns will be stretched equally to fill up the container's width, but each column will not have less than 11rem 
+  width. If there is not enough space to fit the columns in a single row, a new row will be added. 
+
+      @media screen and (min-width: 768px) {
+        .block-domin__prices {
+          grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+          font-size: 1.5rem;
+        }
+      }
+
+- In the desktop version, the .input-group and .block-domin__prices elements are only stretched to 
+  take up a certain width of the screen. So if the screen stretches beyond those width, their width
+  will remain fixed. So we have applied max-width to these containers. 
+
+----------------------------------------------------------------------------------
 
 
 
