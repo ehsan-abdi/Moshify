@@ -2385,6 +2385,13 @@ General Points:
   they will appear horizontally as inline. So we can use these two elements to create 
   a structure for our component without using flex. As example, see 'Plans' design below.
 
+- To check which image the browser retrieves for different DPRs, we can use FireFox's dev tool. There, we can
+  specify the DPR. 
+
+- If we want an element to have a fixed max-width of 500px to appear nicely on tablet/desktop
+  screens, we do not have to write a @media query. We can instead set it in the element's 
+  main properties. 
+
 ----------------------------------------------------------------------------------
 Defining color palette:
 
@@ -3401,6 +3408,30 @@ Domain Block:
   will remain fixed. So we have applied max-width to these containers. 
 
 ----------------------------------------------------------------------------------
+Plans Block:
+
+- We use grid to display the plans on the plans block.
+
+- We added gap to the grid. The horizontal gap is 4rem, but the vertical gap which is used for mobile
+  is 8rem.
+
+- We applied max-width: 500px to the cards. Because otherwise they would stretch on tablet screen and 
+  would not look nice. This will not 'practically' affect mobile and desktop screens.
+
+- On mobile/tablets, the plans will appear vertically in a single column grid. But on desktop they
+  will appear horizontally in three columns. For the card to appear in the centre when its width
+  is capped at 500px, we set the horizontal margint to auto {margin: 0 auto;}
+
+- We have implemented new styles to the plan component. We added hover effect which zooms in on the
+  plan: we used {transform: scale(1.05);}
+
+- We have set {transform: scale(1.1);} to the card size for .popular--plan. We have also defined 
+  hover effect for the .popular--plan (we set its scale to 1.15)
+
+----------------------------------------------------------------------------------
+
+
+
 
 
 

@@ -343,6 +343,14 @@ a {
 
 /* Plans */
 
+.plan {
+  transition: transform 0.2s ease-out;
+}
+
+.plan:hover {
+  transform: scale(1.05);
+}
+
 .plan__name {
   color: #fff;
   font-size: 2.4rem;
@@ -387,6 +395,14 @@ a {
 
 /* Popular Badge */
 
+.plan--popular {
+  transform: scale(1.1);
+}
+
+.plan--popular:hover {
+  transform: scale(1.15);
+}
+
 .plan--popular .card__header {
   position: relative;
 }
@@ -398,15 +414,15 @@ a {
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 90%, 0% 100%);
   color: #fff;
   display: flex;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 600;
   height: 100px;
   justify-content: center;
   padding-bottom: 10px;
   position: absolute;
-  right: 10%;
+  right: 7%;
   top: 0px;
-  width: 35px;
+  width: 30px;
   writing-mode: vertical-lr;
 }
 
@@ -757,4 +773,15 @@ a {
     grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
     font-size: 1.5rem;
   }
+}
+
+/* Plans Block */
+
+.block-plans.grid {
+  gap: 8rem 4rem;
+}
+
+.block-plans .card {
+  max-width: 500px;
+  margin: 0 auto;
 }
