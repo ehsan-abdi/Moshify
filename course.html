@@ -1001,8 +1001,14 @@ In the DevTool, we can click on 'grid' badge shown on the container (Elements ta
       gap (if assigned with a single value, it will be used for both row and column gaps)
 
 - Placing items
+
   - By default, items are placed from top left to bottom right in the grid.
   - By default, each item will take one cell.
+
+  - We can use the 'order' property both in flex and grid to specify where it is layed out.
+      The 'order' property sets the order to lay out an item in a flex or grid container. 
+      Items in a container are sorted by ascending order value and then by their source code order.
+
   - To specify the location of items in the grid, we use these properties for each individual item:
       grid-row
       grid-column
@@ -3437,13 +3443,18 @@ Features Block:
 - We use <article> element to build the feature component. This element is used for any independent 
   self-contained content.
 
-- We can use row-gap property to add space between the grid rows.
+- We can use 'gap' property to add space between the grid rows and columns.
 
-- There is gap between feature description and feature image. We can simply add grid gap to separate them.
-  However, in the Photoshop design, I noticed that the feature description always takes the margin and so
-  its width reduces. The feature image has always taken 50% of the grid. So, I defined .feature--right and
-  .feature--left classes to implement this space. 
+- In the features block, we want the order of content and image to swap consequently. To do this,
+  we must change the order of .feature__content in even .feature components. To do this, we can 
+  use the following pseudo selector. Inside the .block--feature, select the even components with 
+  .feature class, and inside them, set the order for container with .feature__content to 2.
 
+      .block--feature .feature:nth-of-type(even) .feature__content {
+        order: 2;
+      }
+
+----------------------------------------------------------------------------------
 
 
 
