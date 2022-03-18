@@ -785,3 +785,40 @@ a {
   max-width: 500px;
   margin: 0 auto;
 }
+
+/* Features Block */
+
+.feature {
+  row-gap: 6rem;
+  align-items: center;
+}
+
+.feature__heading {
+  margin-top: 2rem;
+}
+
+.feature__image {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .feature__heading {
+    font-size: 2.4rem;
+  }
+
+  .feature__text {
+    font-size: 1.8rem;
+  }
+
+  .feature__description .link-arrow {
+    font-size: 1.5rem;
+  }
+
+  .feature--left .feature__description {
+    margin-right: 5rem;
+  }
+
+  .feature--right .feature__description {
+    margin-left: 5rem;
+  }
+}

@@ -3429,7 +3429,20 @@ Plans Block:
   hover effect for the .popular--plan (we set its scale to 1.15)
 
 ----------------------------------------------------------------------------------
+Features Block:
 
+- First we build the feature component which includes a single feature content. It has an icon, a heading,
+  a description, a link and an image.
+
+- We use <article> element to build the feature component. This element is used for any independent 
+  self-contained content.
+
+- We can use row-gap property to add space between the grid rows.
+
+- There is gap between feature description and feature image. We can simply add grid gap to separate them.
+  However, in the Photoshop design, I noticed that the feature description always takes the margin and so
+  its width reduces. The feature image has always taken 50% of the grid. So, I defined .feature--right and
+  .feature--left classes to implement this space. 
 
 
 
