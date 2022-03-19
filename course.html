@@ -90,6 +90,16 @@ Free Images and Videos
 
 - https://www.animate.style this is a cool website for animations
 
+- We can define the background and font color when a text is selected. This is especially important
+  when the use selects the text on a dark background. 
+  To do this, we can define a universal rule in the Typography section of our stylesheet to be applied
+  to all elements:
+
+      ::selection {
+        background: blue;
+        color: white;
+      }
+
 ========================================================================================
                                         SEO 
 ========================================================================================
@@ -225,10 +235,6 @@ Free Images and Videos
     
     We can always play with different values of a style inside the styles section of the developer
     tool in the browser. 
-
-    ***** To ensure that an image will take 100% of the size of its container, we set its
-    width: 100%. Note that this style MUST be applied to the <img> element itself and NOT
-    its container.
 
 ----------------------------------- Video and Audio -------------------------------
 
@@ -847,6 +853,7 @@ Axes
   - We use axes to align elements in the container
   - There are two axes: main (primary) and cross (secondary)
   - If main is set to row, the cross will be column and vice versa
+  - If {flex-direction: row;} then the cross axis runs down the columns (Y axis)
 
 Aligning items
   - justify-content (along the main axis)
@@ -871,7 +878,7 @@ Multiple lines (flex-wrap & align-content)
   - We can use align-content property to align multiple-line content:
           align-content: centre;
 
-align-self
+align-self (note that justify-self will not work for flexbox. It only works for grid.)
   - To align an item individually within a container, we use align-self property.
           align-self: flex-start;
   - So align-self is applied to an individual item, not the container. 
@@ -936,12 +943,20 @@ In the DevTool, we can click on 'grid' badge shown on the container (Elements ta
           and the second and third colums will have 30% and 70% of the entire width of the container, 
           so there will be an overflow. The problem arises from the fact that % is based on the width
           of the container)
+          (the same problem exist if we define a vertical grid gap and then assign % to the column width.
+          There will be overflow outside the container towards right)
 
       Method 5:
         grid-template: repeat(3, 100px) / 100px 30fr 70fr;
           (fr means fraction of available empty space. 30fr means 30% of the available free space)
           (as best practice, we should avoid % and use fr when sizing the grid rows and columns)
-          (when we use fr, the value of it is relative. So 1fr 1fr is equivalent to 50fr 50fr)
+          (**** when we use fr, the values are relative. So 1fr 1fr is equivalent to 50fr 50fr)
+
+        grid-template-columns: 1fr 1fr;
+          (this does not mean that the two columns always have an identical width. If an image with 
+          a fixed width of larger than 1fr is inserted in the grid, it will distort the distribution
+          between the two columns. 1fr 1fr is only useful when our elements do not force a certain
+          width.)
 
       Method 6:
         grid-template: 100px auto 100px / 30fr 70fr;
@@ -977,9 +992,13 @@ In the DevTool, we can click on 'grid' badge shown on the container (Elements ta
     - justify-content (along the horizontal axix)
     - align-content    (along the vertical axis)
 
-  - Alignment of items inside grid cells
+  - Alignment of all items inside their grid cells
     - justify-items (along the horizontal axix)
     - align-items   (along the vertical axis)
+
+  - Alignment of individual item inside its grid cell
+    - justify-self (along the horizontal axix)
+    - align-self   (along the vertical axis)
 
   - To align, we can set the above properties to:
       start
@@ -1085,7 +1104,17 @@ visibility: hidden;   (this will hide the element in its place. So, its place is
 ========================================================================================
                                       Typography
 ========================================================================================
-        
+
+- We can define the background and font color when a text is selected. This is especially important
+  when the use selects the text on a dark background. 
+  To do this, we can define a universal rule in the Typography section of our stylesheet to be applied
+  to all elements:
+
+      ::selection {
+        background: var(--color-primary);
+        color: #fff;
+      }
+
 ------------------------------------ Styling Fonts --------------------------------------
 
 Three main categories of fonts include:
@@ -1338,6 +1367,68 @@ direction
                                         Images
 ========================================================================================
         
+---------------------------- Placing Image inside a Container ----------------------------
+
+- If we set the <img>> width to 100%, it will always stretch horizontally to take up the entire 
+  width of its container. It will preserve its aspect ratio (will not be squashed). We can 
+  alternatively set its height to 100%, so it will take up the entire height of the container.
+  If we set both of its width and height, then the original aspect ratio is not maintained.
+
+- One good solution to align image inside its container, is to set {display: flex;} for the container.
+
+  Do remember that, when display is set to flex, the default values for justify-content and align-items 
+  is 'stretch'. This means that if the image's width and height have not been set, or set to auto, then
+  the image will stretch (while keeping its aspect ratio) to fill in the 
+  flexbox along the cross axis. For example, if we set {flex-direction: row;}, the cross axis is the Y axis,
+  hence the image will stretch to cover the flexbox along the Y axis. On the other hand, if 
+  {flex-direction: column;}, the cross axis is the X axis, hence the image will stretch to cover the flexbox 
+  along the X axis. In both these situations, it is most likely that the image will either overflow along 
+  main axis or some space is left empty.
+  
+  Now we have set the container's display to flex, we can use justify-content and align-items to algin the
+  image along the main and cross axes, respectively.
+
+- Assume we have a <div> with class .container and an <img> inside this <div>. Also assume that
+  our image file is 200px wide and 70px tall. 
+
+  Scenario 1:
+    - .container {width: 400px; height: 400px;}
+    - img {width: 100%;}
+    - Results: 
+          - image will always stretch (up or down) to fit 100% width of .container
+          - image will maintain its aspect ratio
+          - hence, the image will have a 'responsive' behaviour
+          - So, image will be shown inside .container with width of 400px and height of 140px
+
+  Scenario 2:
+    - .container {width: 400px; height: 400px;}
+    - img {width: auto;}
+    - Results: 
+          - auto is the default value for image width and height
+          - image will be shown at its original file size (200x70 px) regardless of the container size
+          - if image width/height are larger than .container, there will be an overflow
+          - So, image will be shown with width of 200px and height of 70px, regardless of .container size.
+
+  Scenario 3:
+    - .container {width: 400px; height: 400px;}
+    - img {width: 100%; height:100%;}
+    - Results: 
+          - image will take up the entire .container, so it will be at 400x400 px. This means
+            that the image will be distorted and will not keep its aspect ratio.
+
+  Scenario 4:
+    - .container {width: 400px; height: 350px;}
+    - img {width: 100%; height:100%; object-fit: cover; object-position: right;}
+    - Results: 
+          - the image will take the entire .container, with its aspect ratio preserved. Part of
+            the image which is not shown (due to preserving the aspect ratio) will not overflown.
+          - Note that {object-fil: cover;} will never change the size of the image to be displayed.
+            It only ensures that the image that is shown preserves its aspect ratio.
+          - So, image will be scaled up by x5 to fit the height of .container. The width of the 
+            actual image will hence be 5x200=1000px, but only 400px of its width will be shown.
+          - Now, by default when the image covers the container, it will be centre aligned. We
+            can use object-position property to align it to the left, right, top or bottom. 
+
 -------------------------------- Image Types and Formats ----------------------------------
 
 There are two types of images: Raster and Vector images.
@@ -2398,6 +2489,16 @@ General Points:
   screens, we do not have to write a @media query. We can instead set it in the element's 
   main properties. 
 
+- We can define the background and font color when a text is selected. This is especially important
+  when the use selects the text on a dark background. 
+  To do this, we can define a universal rule in the Typography section of our stylesheet to be applied
+  to all elements:
+
+      ::selection {
+        background: var(--color-primary);
+        color: #fff;
+      }
+
 ----------------------------------------------------------------------------------
 Defining color palette:
 
@@ -3455,6 +3556,69 @@ Features Block:
       }
 
 ----------------------------------------------------------------------------------
+Showcase Block:
+
+- The main challenge in this block is to ensure that, on tablet and desktop screens, the image on the
+  left side:
+      - has its original width size, but limited to 670px if bigger
+      - maintains its original aspect ratio (ie. not squashed)
+      - starts from the centre of the screen and takes up all the space to the left until reaching its
+        max width of 670px. After reaching the max width of 670px, left margin starts to appear. 
+      - The container which is a grid of two equal colums (and has a max width of 1140) is always in 
+        the centre of the screen. So, for example, when the viewport width is 1500px, the container is 
+        in the middle, hence the media objects on the right column has 1140/2=570px width and is placed
+        with (1500/2)-(1140/2)=180px margin from right. However, the image will overflow the container's
+        left column (because column width is 570px and image width is 670px) so it will have less margin 
+        to the left (compared to the container's right column). The left margin will be (1500/2)-670=80px.
+        
+- To implement the above criteria, inside @media query for tablet/desktop:
+      - We must change the grid-template-columns from 1fr 1fr to 50% 50%. The value of 1fr 1fr splits the
+        available space equally between columns, but if one column contains an image that has a absolute 
+        width which is larger than half of the container width, then the image will take up more than
+        half of the container width. However, when we use 50% 50% as the value for grid-template-columns,
+        we force the two colums to have identical width, each half of the container width. 
+        If we have defined a column gap for the grid, then 50% 50% will not work. Because 50% 50% is relative 
+        to the size of the container and when we have a grid gap, it will be an additional width. So there will
+        be an overflow from right.
+      - We must set the image width to auto and its max-width to 670px. The image will overflow the left column
+        because the column width is fixed to 50% of its container and the image width is larger. The overflow
+        from right by default. To position to image to start from the right side of the column and overflow to 
+        left, we must set {justify-self: end;} for the image.
+      - In this example, we have used <picture> element and inserted the <img> element inside the <picture> element.
+        Therefore, we must ensure that the width and max-width properties are applied to the <img> element and 
+        justify-self property is applied to the <picture> element.
+      - So this will be the correct implementation:
+      
+          HTML:
+              <section class="block-showcase">
+                  <div class="container grid grid--1x2">
+                      <picture class="block-showcase__image">
+                          <source type="image/webp" srcset="images/ipad.webp 1x, images/ipad@2x.webp 2x">
+                          <source type="image/png" srcset="images/ipad.png 1x, images/ipad@2x.png 2x">
+                          <img src="images/ipad@2x.png" alt="">
+                      </picture>
+                  </div>
+              </section>
+
+          CSS:
+              @media screen and (min-width: 768px) {
+
+                .block-showcase__image {
+                  justify-self: end;
+                }
+
+                .block-showcase__image > img {
+                  width: auto;
+                  max-width: 670px;
+                }
+
+                .block-showcase .grid {
+                  grid-template-columns: 50% 50%;
+                }
+              }
+
+----------------------------------------------------------------------------------
+
 
 
 
