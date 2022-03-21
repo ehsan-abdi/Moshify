@@ -6,6 +6,7 @@
   --color-body: #918ca4;
   --color-body-dark: #5c5577;
   --color-border: #ccc;
+  --color-footer: #232323;
   --border-radius: 10rem; /* a large border-radius will ensure round ends at both sides */
 }
 
@@ -289,7 +290,7 @@ a {
   color: var(--color-headings);
   font-size: 2rem;
   outline: 0;
-  padding: 1.5rem 3.5rem;
+  padding: 1.5rem 1.5rem 1.5rem 2.5rem;
 }
 
 ::placeholder {
@@ -304,12 +305,14 @@ a {
 
 .input-group .input {
   border: 0;
-  /* flex-grow: 1; /* to take up the entire available space in the flex container and push the search button to the end */
-  width: 100%;
+  flex-grow: 1; /* to take up the entire available space in the flex container and push the search button to the end */
+  width: 0;
 }
 
 .input-group .btn {
   margin: 5px;
+  padding-left: 4vw;
+  padding-right: 4vw;
 }
 
 @media screen and (min-width: 1024px) {
@@ -400,14 +403,6 @@ a {
 
 /******************************* Popular Badge *******************************/
 
-.plan--popular {
-  transform: scale(1.1);
-}
-
-.plan--popular:hover {
-  transform: scale(1.15);
-}
-
 .plan--popular .card__header {
   position: relative;
 }
@@ -429,6 +424,16 @@ a {
   top: 0px;
   width: 30px;
   writing-mode: vertical-lr;
+}
+
+@media screen and (min-width: 768px) {
+  .plan--popular {
+    transform: scale(1.1);
+  }
+
+  .plan--popular:hover {
+    transform: scale(1.15);
+  }
 }
 
 /******************************* Media Objects *******************************/
@@ -760,8 +765,9 @@ a {
 }
 
 .block-domin__prices {
+  color: var(--color-headings);
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 6rem);
   font-size: 1.8rem;
   font-weight: 600;
@@ -867,10 +873,30 @@ a {
   }
 }
 
+/*******************************  Callout Block  *******************************/
+
+.block-callout {
+  background: var(--color-footer);
+  margin-top: 15rem;
+}
+
+.block-callout .callout {
+  margin: 0 auto;
+  margin-top: -20rem;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .block-callout .callout {
+    margin-top: -15rem;
+    width: 90%;
+  }
+}
+
 /*******************************  Footer Block  *******************************/
 
 .footer {
-  background: #232323;
+  background: var(--color-footer);
 }
 
 .footer__container {
