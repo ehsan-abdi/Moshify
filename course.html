@@ -210,6 +210,17 @@ Free Images and Videos
 - If the anchor element is used to create menu/navigation, it is often used inside <ul>. 
   It might be a good design solution if the <a> element inherits its color from the <ul> element:
   a:link, a:visited {color: inherit;}
+
+- When we have anchor elements ie. <a>, the text color will be not be the normal text color. Also, by 
+  default, it will be different for visited and unvisited links. If we want to change the anchor element
+  color regardless of it being visited or not, we can apply the color property to <a> in CSS. For example,
+  to do this for the .footer__content class, we use this selector: .footer__content a
+
+  In most cases, remember to also define color/effects for mouse hover for link elements (ie. a:hover)
+
+  The anchor element is an inline element, so we cannot use margin and padding properties for it. If we want
+  to set padding/margin, remember to change its display to inline-block or block. Remember to give transition
+  effect for the hover to give it a nice effect. For example, {transition: color 0.3s;}
     
 ---------------------------------------- Images ------------------------------------
 
@@ -884,6 +895,12 @@ align-self (note that justify-self will not work for flexbox. It only works for 
   - So align-self is applied to an individual item, not the container. 
   - align-self will override the value assigned by algin-items.
 
+- Placing items:
+  - We can use the 'order' property both in flex and grid to specify where it is layed out.
+      The 'order' property sets the order to lay out an item in a flex or grid container. 
+      Items in a container are sorted by ascending order value and then by their source code order.
+    Note that the default order value is 0 for all elements inside the grid/felx.
+
 Sizing items:
   - The sizing properties are only applied to individual items not the container.
   - There are four properties:
@@ -1027,6 +1044,7 @@ In the DevTool, we can click on 'grid' badge shown on the container (Elements ta
   - We can use the 'order' property both in flex and grid to specify where it is layed out.
       The 'order' property sets the order to lay out an item in a flex or grid container. 
       Items in a container are sorted by ascending order value and then by their source code order.
+    Note that the default order value is 0 for all elements inside the grid/felx.
 
   - To specify the location of items in the grid, we use these properties for each individual item:
       grid-row
@@ -3618,7 +3636,47 @@ Showcase Block:
               }
 
 ----------------------------------------------------------------------------------
+Footer Block:
 
+- We use the <footer> element to create the footer block.
+
+- Since the footer has a dark background, we create a container with class .container (to limit the 
+  maximum width on wide desktop screens to 1140px - see above). This container will also be 
+  our footer container with class footer__container. I used flexbox for the footer, but Mosh uses a grid.
+
+- On mobile, the footer comprises a set of collapsibles, followed by the website logo. So we use the 
+  collapsible component for each section of the heading. We use <section> element to create each
+  collapsible and give it an additional class of footer__section.
+
+- In order to style the heading and content inside the collapsible components, we should define new
+  classes footer__heading and footer__content to specify the styles specific to the footer. This is 
+  because that if we decide to change the footer design from collapsible to something else, we do 
+  not have to restyle all the footer contents.
+
+- On mobile, the footer sections are arranged vertically, but on tablet and desktop they are arranged
+  horizontally. 
+
+- When we have anchor elements ie. <a>, the text color will be not be the normal text color. Also, by 
+  default, it will be different for visited and unvisited links. If we want to change the anchor element
+  color regardless of it being visited or not, we can apply the color property to <a> in CSS. For example,
+  to do this for the .footer__content class, we use this selector: .footer__content a
+
+  In most cases, remember to also define color/effects for mouse hover for link elements (ie. a:hover)
+
+  The anchor element is an inline element, so we cannot use margin and padding properties for it. If we want
+  to set padding/margin, remember to change its display to inline-block or block. Remember to give transition
+  effect for the hover to give it a nice effect. For example, {transition: color 0.3s;}
+
+- On mobile, the logo appears at the end of the footer, but on tablet/desktop it appears at the beginning.
+  To do this, we set the 'order' property for laptop/desktop to -1. Note that the order of all elements is
+  0 by default. So, if we set it to a negative number, that element will appear at the beginning. If we
+  set it to a positive number (eg. 1), it will appear at the end.
+
+- On tablet/desktop, we do not have collapsibles and the content is shown all the time. So inside @media query,
+  we set the display for the chevron icon to none and set the max-height and opacity property of the 
+  collapsible__content to 100%. 
+  
+----------------------------------------------------------------------------------
 
 
 

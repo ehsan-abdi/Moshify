@@ -15,7 +15,7 @@
   box-sizing: border-box;
 }
 
-/* Typography */
+/******************************* Typography *******************************/
 
 ::selection {
   background: var(--color-primary);
@@ -75,7 +75,7 @@ p {
   }
 }
 
-/* Links */
+/******************************* Links *******************************/
 
 a {
   text-decoration: none;
@@ -106,7 +106,7 @@ a {
   }
 }
 
-/* Badges */
+/******************************* Badges *******************************/
 
 .badge {
   border-radius: var(--border-radius);
@@ -141,12 +141,11 @@ a {
   }
 }
 
-/* Lists */
+/******************************* Lists *******************************/
 
 .list {
   list-style: none;
   padding-left: 0;
-  color: var(--color-headings);
 }
 
 .list--inline .list__item {
@@ -155,6 +154,7 @@ a {
 }
 
 .list--tick {
+  color: var(--color-headings);
   list-style-image: url(../images/tick.svg);
   padding-left: 3rem;
 }
@@ -170,7 +170,7 @@ a {
   }
 }
 
-/* Icons */
+/******************************* Icons *******************************/
 
 .icon {
   height: 40px;
@@ -204,7 +204,7 @@ a {
   background: var(--color-accent);
 }
 
-/* Buttons */
+/******************************* Buttons *******************************/
 
 .btn {
   border-radius: var(--border-radius);
@@ -281,7 +281,7 @@ a {
   }
 }
 
-/* Inputs */
+/******************************* Inputs *******************************/
 
 .input {
   border-radius: var(--border-radius);
@@ -318,7 +318,7 @@ a {
   }
 }
 
-/* Cards */
+/******************************* Cards *******************************/
 
 .card {
   border-radius: 1rem;
@@ -346,7 +346,7 @@ a {
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
 }
 
-/* Plans */
+/******************************* Plans *******************************/
 
 .plan {
   transition: transform 0.2s ease-out;
@@ -398,7 +398,7 @@ a {
   }
 }
 
-/* Popular Badge */
+/******************************* Popular Badge *******************************/
 
 .plan--popular {
   transform: scale(1.1);
@@ -431,7 +431,7 @@ a {
   writing-mode: vertical-lr;
 }
 
-/* Media Objects */
+/******************************* Media Objects *******************************/
 
 .media {
   display: flex;
@@ -450,7 +450,7 @@ a {
   margin-top: 1rem;
 }
 
-/* Quotes */
+/******************************* Quotes *******************************/
 
 .quote__text {
   font-size: 3rem;
@@ -494,7 +494,7 @@ a {
   }
 }
 
-/* Grids */
+/******************************* Grids *******************************/
 
 .grid {
   display: grid;
@@ -512,7 +512,7 @@ a {
   }
 }
 
-/* Testimonials */
+/******************************* Testimonials *******************************/
 
 .testimonial {
   padding: 3.5rem;
@@ -543,7 +543,7 @@ a {
   }
 }
 
-/* Callouts */
+/******************************* Callouts *******************************/
 
 .callout {
   border-radius: 10px;
@@ -584,7 +584,7 @@ a {
   }
 }
 
-/* Collapsibles */
+/******************************* Collapsibles *******************************/
 
 .collapsible__header {
   display: flex;
@@ -618,7 +618,7 @@ a {
   transform: rotate(0);
 }
 
-/* Blocks */
+/******************************* Blocks *******************************/
 
 .block {
   --vertical-padding: 6rem;
@@ -658,7 +658,7 @@ a {
   margin: 0 auto; /* to ensure horizontal space is distributed equally between left and right margins */
 }
 
-/* Navigation Bar */
+/******************************* Navigation Bar *******************************/
 
 .nav {
   background: #000;
@@ -723,7 +723,7 @@ a {
   }
 }
 
-/* Heros */
+/******************************* Heros *******************************/
 
 .hero__image {
   width: 100%;
@@ -750,7 +750,7 @@ a {
   }
 }
 
-/* Domain Block */
+/******************************* Domain Block *******************************/
 
 .block--domain .input-group {
   box-shadow: 0 0 30px 20px #e6ebee;
@@ -777,7 +777,7 @@ a {
   }
 }
 
-/* Plans Block */
+/******************************* Plans Block *******************************/
 
 .block-plans.grid {
   gap: 8rem 4rem;
@@ -788,7 +788,7 @@ a {
   margin: 0 auto;
 }
 
-/* Features Block */
+/******************************* Features Block *******************************/
 
 .feature {
   align-items: center;
@@ -826,7 +826,7 @@ a {
   }
 }
 
-/* Showcase Block */
+/******************************* Showcase Block *******************************/
 
 .block-showcase__image > img {
   width: 100%;
@@ -864,5 +864,100 @@ a {
 
   .block-showcase .grid {
     grid-template-columns: 50% 50%;
+  }
+}
+
+/*******************************  Footer Block  *******************************/
+
+.footer {
+  background: #232323;
+}
+
+.footer__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__section {
+  padding: 3rem 0;
+  border-bottom: 2px solid #393939;
+}
+
+.footer .collapsible__chevron {
+  fill: #393939;
+}
+
+.footer__heading {
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+}
+
+.footer__content a {
+  color: #fff;
+  display: inline-block; /* this enables us to apply margin to the anchor element */
+  font-weight: 300;
+  margin: 1rem 0;
+  opacity: 70%;
+  transition: opacity 0.3s;
+}
+
+.footer__content a:hover {
+  opacity: 100%;
+}
+
+.footer__brand {
+  margin-top: 6rem;
+  text-align: center;
+}
+
+.footer__logo {
+  width: 100%;
+  max-width: 230px; /* this is the native size of the image */
+  margin-bottom: 2rem;
+}
+
+.footer__copyright {
+  font-size: 2rem;
+  color: #fff;
+  font-weight: 300;
+  opacity: 40%;
+}
+
+@media screen and (min-width: 768px) {
+  .footer__container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footer .collapsible__chevron {
+    display: none;
+  }
+
+  .footer .collapsible__content {
+    max-height: 100%;
+    opacity: 1;
+  }
+
+  .footer__section {
+    border-bottom: none;
+    margin: 0 2rem;
+  }
+
+  .footer__heading {
+    cursor: default;
+  }
+
+  .footer__heading,
+  .footer__content,
+  .footer__copyright {
+    font-size: 1.5rem;
+  }
+
+  .footer__brand {
+    margin-top: 1.5rem;
+    order: -1; /* with this, the branding section will appear at the beginning */
   }
 }
