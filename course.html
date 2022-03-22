@@ -3837,7 +3837,47 @@ Building for Production:
 
     Now, all the files created in the dist folder are the ones ready to be shipped to a server for production.
 
-    
+----------------------------------------------------------------------------------
+Pushing to Github:
+
+Step 1: create a repository on Github
+
+Step 2: link our local repository to our github repository
+    - On the bottom of the page where we created the repository, there are instruction on how we can 
+      push an existing repository from the command line. We can simply copy this and paste it on our 
+      Terminal window.
+
+      $git remote add origin https://github.com/ehsan-abdi/Moshify.git
+      $git branch -M main
+      $git push -u origin main
+
+    - Now our repository is on github.
+
+Step 3: Push new changes as we code along
+    - Whenever we make commits, they are stored locally. When we are ready to push these changs to
+      github, we simply execute this in Terminal:
+      $git push
+
+----------------------------------------------------------------------------------
+Deployment:
+
+- We can use https://www.netlify.com/ to deploy our website for free.
+
+1- Create an account on Netlify.
+2- Then, under th Sites menu, choose New site from Git.
+3- Then, choose github and give Netlify permission to access the repository.
+4- Ensure to configure these settings:
+    Build command: parcel build --no-minify index.html
+    Publish directory: dist
+
+5- Netlify will give our project a random name which ends with .netlify.app
+   We can customise the name under Site Settings > General > Site details > Change site name
+
+   
+
+
+
+
 
 
 
