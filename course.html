@@ -100,6 +100,21 @@ Free Images and Videos
         color: white;
       }
 
+Animations:
+  - We can use a JavaScript library called AOS to animate different components of our page when the
+    user scrolls down on the page.
+
+  - Search for 'aos animation' and visit https://michalsnik.github.io/aos/ 
+    Visit the github page at: https://github.com/michalsnik/aos 
+    Add their stylesheet into our HTML file (below our own stylesheets)
+    Add their JavaScript link into our HTML file (below our own JavaScript import)
+
+    Now, we use data-aos="" attribute for any element that we want to add the animation to. We can find
+    the list of animations and visually see how they perform on the first link above. Also, the list is
+    provided at the bottom of the second link.
+
+    We can use data-aos-duration="3000" to specify the mili-seconds for the animation duration.
+
 ========================================================================================
                                         SEO 
 ========================================================================================
@@ -3712,6 +3727,122 @@ Animations:
   We can use data-aos-duration="3000" to specify the mili-seconds for the animation duration.
 
 ----------------------------------------------------------------------------------
+Search Engine Optimisation (SEO):
+
+1- Add a page title in the HTML header
+
+        <title>Moshify - Go online for just $9</title>
+
+2- Add meta tags. They give search engines information about our page. Every meta tag has 
+   two attributes: name="" and content="".
+
+   The first meta tag is description. This will appear on the seaarch results page in 
+   search engines. 
+
+        <meta name="description" content="Deploy your websites in less than 60 seconds.">
+
+3- The Open Graph Protocol (https://ogp.me/)
+   This is what appears about our website when people share it on social media. This protocol
+   was first used by Facebook. 
+   The basic properties we need to include in our meta data are (for full list refer to the above link):
+
+        <meta property="og:title" content="Moshify....">
+        <meta property="og:description" content="This website....">
+        <meta property="og:type" content="Website">
+        <meta property="og:image" content="http://....image">
+        <meta property="og:url" content="http://moshified.com">
+
+----------------------------------------------------------------------------------
+HTML and CSS Validation:
+
+- We should use HTML and CSS validators provided by w3.org to validate our html and css files.
+
+----------------------------------------------------------------------------------
+Building for Production:
+
+- We use a build tool for production.
+
+- Using a build tool, we can:
+    - combine CSS and JS files  => we reduce the number of http requests sent from the browser to the server
+    - Minify CSS/JS files  => remove all extra spaces and comments, hence deliver smaller files to users
+    - Optimise images
+
+- Build tools:
+    - Webpack => most popular, but needs lots of configurations
+    - Rollup
+    - Parcel => great for beginners
+
+- We use Parcel here to build our website => https://parceljs.org/
+
+- Build our website using Parcel (we use Terminal window - shortcut ctrl + ` (backtick)):
+  
+  Step 1: Initialise npm
+    $npm init -y
+
+    We use -y to avoid answering questions about our projct
+
+    The above will create a new file package.json. This file contains information about our project.
+
+  Step 2: Install Parcel
+    $npm i -D parcel-bundler
+
+    -D ensures that parcel-bundler will be used as a development dependency and will be added to 
+     package.json file. It will not be deployed for production ie. this is not a library that we
+     want to ship with our website.
+
+    Now, a folder called node_modules is created. This includes all the libraries installed using npm.
+
+    Of course, we do not the folder node_modules to be included in our source control repository. Since our
+    dependencies are listed in package.json, these libraries can be installed whenever needed on another machine.
+    So we create .gitignore file and include the node_modules folder in there. 
+
+  Step 3: Use Parcel to launch our website
+    $node_modules/.bin/parcel index.html
+
+    We can alternatively install Parcel globally, so it can be run from any folder. To do this:
+    $sudo npm i -g parcel-bundler
+
+    sudo is to address the permission error for global installation.
+    -g ensures that the installation is global.
+
+    Now, we can simply use:
+    $parcel index.html
+
+    This will build our website which will be available on Parcel's own development server.
+    Parcel comes with its own development server, which will be provided once the above command is
+    executed. It is currently at http://localhost:1234 
+
+    Parcel's development server has live reloading feature. So any changes on our code will be immediately
+    reflected on the localhost address.
+
+    We now have two new folders: .cache and dist which are created by Parcel during the build process. We do
+    not want these folder to be in our source control, so we should add them to .gitignore file.
+
+    dist folders contains all the files built by Parcel during the build process. All files are named with 
+    hashing convention, so that we avoid browser's cache to use our old code whenever we have changed
+    part of our code.
+
+  Step 4: Build for Production
+    $parcel build index.html
+
+    Before we execute the above command, we can delete the dist folder, so that all files build for development
+    phase are deleted.
+
+    To come out of the previous build process, we use ctrl + c
+    To clear the screen in Terminal, we use ctrl + l
+
+    When I executed the above, I got an error "tree.render is not a function". This is to do with minifying
+    svg files. I found this solution:
+    $parcel build --no-minify index.html
+
+    Now, all the files created in the dist folder are the ones ready to be shipped to a server for production.
+
+    
+
+
+
+
+
 
 
 
